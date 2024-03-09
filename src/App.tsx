@@ -1,17 +1,19 @@
 import './App.css';
+import Chat from './components/Chat';
+import Location from './components/Location';
+import Learn from './components/Learn';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Switch } from '@chakra-ui/react';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/location" element={<Location/>} />
+          <Route path="/learn" element={<Learn/>} />
+          <Route path="/" element={<Chat/>} />
+        </Routes>
+    </BrowserRouter>
   );
 }
 
