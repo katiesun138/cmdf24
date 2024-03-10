@@ -6,11 +6,12 @@ const cohere = new CohereClient({
   token: process.env.COHERE_API_TOKEN,
 });
 
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
   (async () => {
+    console.log(req);
     const chatStream = await cohere.chatStream({
       stream: true,
-      message: 'What is the first thing I should check to know if Im pregnant?',
+      message: req.body.userInput,
       // perform web search before answering the question. You can also use your own custom connector.
       preambleOverride: 'You are a trusted big sister to help support women during their abortion process.',
       connectors: [{ id: 'web-search' }],
@@ -23,8 +24,9 @@ router.get('/', (req, res) => {
         fullMessage = fullMessage + message['text'];
       }
     }
-
-    res.status(200).send(fullMessage);
+    console.log('cohere api done!');
+    res.status(200).send(JSON.stringify(fullMessage));
+    console.log('response sent!');
   })();
 });
 
