@@ -8,10 +8,11 @@ const cohere = new CohereClient({
 
 router.post('/', (req, res) => {
   (async () => {
-    console.log(req);
+    // console.log(req);
     const chatStream = await cohere.chatStream({
       stream: true,
-      message: req.body.userInput,
+      max_tokens_limit: 100,
+      message: "Can you provide an answer to this input in less than 200 words " + req.body.userInput,
       // perform web search before answering the question. You can also use your own custom connector.
       preambleOverride: 'You are a trusted big sister to help support women during their abortion process.',
       connectors: [{ id: 'web-search' }],
@@ -21,7 +22,7 @@ router.post('/', (req, res) => {
     var fullMessage = '';
     for await (const message of chatStream) {
       if (message.eventType === 'text-generation') {
-        console.log(message);
+        // console.log(message);
         fullMessage = fullMessage + message['text'];
       }
     }
@@ -33,7 +34,7 @@ router.post('/', (req, res) => {
 
 router.post('/prompts', (req, res) => {
   (async () => {
-    console.log(req);
+    // console.log(req);
     const firstPromptsAsk =
       'Can you generate a list of only 3 questions about abortion concerns? Please include only a list of questions with one space in between, nothing else';
     const followUpPromptsAsk =
@@ -43,6 +44,7 @@ router.post('/prompts', (req, res) => {
     const chatStream = await cohere.chatStream({
       stream: true,
       message: promptsAsk,
+      max_tokens_limit: 100,
       // perform web search before answering the question. You can also use your own custom connector.
       preambleOverride: 'You are a trusted big sister to help support women during their abortion process.',
       connectors: [{ id: 'web-search' }],
@@ -52,7 +54,7 @@ router.post('/prompts', (req, res) => {
     var fullMessage = '';
     for await (const message of chatStream) {
       if (message.eventType === 'text-generation') {
-        console.log(message);
+        // console.log(message);
         fullMessage = fullMessage + message['text'];
       }
     }

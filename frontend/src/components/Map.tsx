@@ -73,6 +73,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, Circle } from '@react-google-maps/api';
 import { Box, Text, ButtonGroup, Card, CardBody, Flex, Heading, Icon, Link, filter, Stack, Select, Button } from '@chakra-ui/react';
 import Header from './Header';
+import HeaderMap from './HeaderMap';
 import { click } from '@testing-library/user-event/dist/click';
 import { AdvancedMarker } from '@vis.gl/react-google-maps';
 import { LuArrowUpRight, LuMapPin, LuPhone } from 'react-icons/lu';
@@ -168,7 +169,7 @@ const Map = () => {
       marginBottom={filteredClinics.length > 1 ? 14 : 4}
       overflow="auto"
     >
-      <Header />
+      <HeaderMap />
       <Flex width="100%" height={['300px', '300px', '400px']}>
         <GoogleMap
           mapContainerStyle={{

@@ -1,5 +1,6 @@
 import React from 'react';
 import { LuKeyboard, LuPenSquare, LuSend } from 'react-icons/lu';
+import { Link } from 'react-router-dom';
 import { Flex, Box, Input, Button, InputGroup, InputLeftElement, InputRightElement, Image, Stack, Heading, Text, Icon } from '@chakra-ui/react';
 
 interface ChatProps {
@@ -57,16 +58,16 @@ const Chat: React.FC<ChatProps> = ({ onSendMessage }) => {
         width="100%"
       >
         <Flex gap="0.5rem" alignItems="center">
-          <Button paddingInline="0" color="black">
+        <Link to="/chat"><Button paddingInline="0" color="black">
             <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '1.6rem', maxHeight: '100px' }} />
-          </Button>
+          </Button></Link>
         </Flex>
         <Heading fontSize="md" fontWeight="600">
           Chat with BigSister
         </Heading>
-        <Button paddingInline="0" color="black">
+        <Link to="/livechat"><Button paddingInline="0" color="black">
           <Icon as={LuPenSquare} boxSize="1.6rem" />
-        </Button>
+        </Button></Link>
       </Flex>
 
       <Stack spacing={2}>
