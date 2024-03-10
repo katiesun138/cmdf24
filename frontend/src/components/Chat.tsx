@@ -71,24 +71,27 @@ const Chat: React.FC<ChatProps> = ({ onSendMessage }) => {
       </Flex>
 
       <Stack spacing={2}>
-        <Box textAlign={'left'} bg={'white'} color="black" p={2} borderRadius="24px 24px 24px 0">
-          <Text padding="0.5rem">
-            {
-              "Hi, I'm BigSister! Feel free to ask me anything about abortion. This is a safe space, I am here to provide any guidance and support. Be reassured, our conversation stays anonymous and all the chat history gets deleted once you close this chat!"
-            }
-          </Text>
-        </Box>
+        <Flex>
+          <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+          <Box textAlign={'left'} bg={'white'} color="black" p={2} borderRadius="24px 24px 24px 0">
+            <Text padding="0.5rem">
+              {
+                "Hi, I'm BigSister! Feel free to ask me anything about abortion. This is a safe space, I am here to provide any guidance and support. Be reassured, our conversation stays anonymous and all the chat history gets deleted once you close this chat!"
+              }
+            </Text>
+          </Box>
+        </Flex>
       </Stack>
-      <Stack height="80vh" marginBottom="5rem" overflow="scrollX">
+      <Stack height="100vh" overflow="scrollX">
         <Stack
           spacing={2}
-          position="sticky"
-          overflow="scrollX"
+          overflowY="auto"
           bottom="6rem"
+          paddingBottom="1rem"
           direction="column"
           alignItems="flex-end"
           justifyContent="flex-end"
-          height="100%"
+          height="80%"
         >
           {messages.map((msg, index) => (
             <Box

@@ -1,8 +1,8 @@
 import TopicBox from './TopicBox';
 import React, { useState, useEffect } from 'react';
-import { LuSettings2, LuPenSquare } from 'react-icons/lu';
+import { LuSettings2, LuPenSquare, LuSend } from 'react-icons/lu';
 import TinyComponent from './TinyMCE';
-import { Stack, Image, Flex, Button, Heading, Icon, Input } from '@chakra-ui/react';
+import { Stack, Image, Flex, Button, Heading, Icon, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
 import Header from './Header';
 
 function Forum() {
@@ -23,7 +23,42 @@ function Forum() {
   }, [contentVisible]);
   return (
     <Stack width="100%" maxWidth="1200px" paddingInline={['1rem', '2rem', '8rem']} height="100%" justifyContent="center" padding="0.5rem">
-      <Header />
+      <Flex
+        paddingBlock="0.5rem"
+        // borderBottom="1px solid rgba(0, 0, 0, 0.20)"
+        justifyContent="space-between"
+        alignItems="center"
+        width="100%"
+      >
+        <Flex gap="0.5rem" alignItems="center">
+          <Button paddingInline="0" color="black">
+            <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '1.6rem', maxHeight: '100px' }} />
+          </Button>
+          <Heading fontSize="md" display={['none', 'none', 'block']}>
+            BigSister
+          </Heading>
+        </Flex>
+        <InputGroup
+          variant="outline"
+          marginInline="0.5rem"
+          borderRadius="100px"
+          maxWidth="70%"
+          bg="white"
+          borderColor="gray.200" // Set the border color to gray
+          borderWidth="1px" // Set the border width to 1px
+          color="gray.800"
+        >
+          <Input borderRadius="100px" placeholder="Ask any question..." _placeholder={{ color: 'gray.400', fontSize: 'sm' }} />
+          <InputRightElement w="3.0rem">
+            <Button h="2.0rem" bg="hotpink" padding="0rem" borderRadius="100px">
+              <LuSend />
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+        <Button paddingInline="0" color="black" onClick={() => setContentVisible(!contentVisible)}>
+          <Icon as={LuPenSquare} boxSize="1.6rem" />
+        </Button>
+      </Flex>
       <Flex marginBlock="0.5rem" gap="0.5rem" height={contentVisible ? 'fit-content' : 0} id="content">
         <Button variant="hotpink">Popular</Button>
         <Button color="black" bg="white" borderRadius="100px" opacity="0.87">

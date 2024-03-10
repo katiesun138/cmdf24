@@ -71,7 +71,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, Circle } from '@react-google-maps/api';
-import { Box, Text, ButtonGroup, Card, CardBody, Flex, Heading, Icon, Link, filter, Stack } from '@chakra-ui/react';
+import { Box, Text, Button, Card, CardBody, Flex, Heading, Icon, Link, filter, Stack } from '@chakra-ui/react';
 import Header from './Header';
 import { click } from '@testing-library/user-event/dist/click';
 import { AdvancedMarker } from '@vis.gl/react-google-maps';
@@ -162,7 +162,7 @@ const Map = () => {
       overflow="auto"
     >
       <Header />
-      <Flex width="100%" height={['300px', '300px', '500px']}>
+      <Flex width="100%" height={['300px', '300px', '400px']}>
         <GoogleMap
           mapContainerStyle={{
             width: '100%',
@@ -225,26 +225,33 @@ const Map = () => {
             <Flex direction="column" align="left" width="100%">
               {filteredClinics.length > 0 ? (
                 filteredClinics.map((clinic, index) => (
-                  <Box key={index} width="100%" paddingBlock="0.2rem" borderWidth="1px" borderRadius="md">
-                    <Heading size="1rem">
-                      <Link href={clinic.url} noOfLines={1} textDecoration="none" color="blue.500" _hover={{ color: 'blue.700' }}>
-                        {clinic.name}
+                  <Flex key={index} justifyContent="space-between" width="100%" paddingBlock="0.2rem" borderWidth="1px" borderRadius="md">
+                    <Stack maxWidth="60%">
+                      <Heading size="1rem">
+                        <Link href={clinic.url} noOfLines={1} textDecoration="none" color="black" _hover={{ color: 'blue.700' }}>
+                          {clinic.name}
+                        </Link>
+                        <Flex direction={['column', 'column', 'row']} opacity="0.6" gap={['0', '0', '1rem']}>
+                          <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm">
+                            <Icon as={LuPhone} boxSize="1.0rem" />
+                            {clinic.phone}
+                          </Box>
+                          <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm" maxWidth="80%">
+                            <Icon as={LuMapPin} boxSize="1.0rem" />
+                            <Text fontSize="sm" color="#404353" noOfLines={1}>
+                              {clinic.addr}
+                            </Text>
+                          </Box>
+                        </Flex>
+                      </Heading>
+                    </Stack>
+                    <Link display="flex" alignItems="center" href={clinic.url}>
+                      <Button variant="hotpink" paddingInline="12px">
+                        View site
                         <Icon as={LuArrowUpRight} marginLeft="0.3rem" boxSize="1.0rem" />
-                      </Link>
-                      <Flex direction={['column', 'column', 'row']} opacity="0.6" gap={['0', '0', '1rem']}>
-                        <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm">
-                          <Icon as={LuPhone} boxSize="1.0rem" />
-                          {clinic.phone}
-                        </Box>
-                        <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm" maxWidth="80%">
-                          <Icon as={LuMapPin} boxSize="1.0rem" />
-                          <Text fontSize="sm" color="#404353" noOfLines={1}>
-                            {clinic.addr}
-                          </Text>
-                        </Box>
-                      </Flex>
-                    </Heading>
-                  </Box>
+                      </Button>
+                    </Link>
+                  </Flex>
                 ))
               ) : (
                 <Box width="100%" borderWidth="1px" borderRadius="md" p="4">
