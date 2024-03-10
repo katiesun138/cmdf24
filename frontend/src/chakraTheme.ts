@@ -70,6 +70,11 @@ const components = {
       letterSpacing: `-0.01em`,
     },
   },
+  Select: {
+    option: {
+      bg: `white`,
+    },
+  },
 };
 
 export const chakraTheme = extendTheme({
