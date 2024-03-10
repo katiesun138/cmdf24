@@ -3,12 +3,14 @@ import { extendTheme } from '@chakra-ui/react';
 // Dark theme configuration
 const colors = {
   brand: {
-    deep: `#FF0098`,
-    700: `#FF0098`,
+    deep: `#E92498`,
+    700: `#F6A8D4`,
     500: `#FB5680`,
     400: `#F87CC7`,
     300: `#FAB9D8`,
   },
+  hotpink: `#E92498`,
+  lighterpink: `#F6A8D4`,
   secondary: {
     700: `#20A1A2`,
     500: `#52DEEB`,
