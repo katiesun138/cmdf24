@@ -2,7 +2,7 @@ import React from 'react';
 import { LuKeyboard, LuSend } from 'react-icons/lu';
 import { Input, Button, InputGroup, InputLeftElement, InputRightElement, Grid, Stack, Heading } from '@chakra-ui/react';
 import ChatOption from './ChatOption';
-import Navbar from './Navbar';
+import Navbar from './NavBar';
 
 function Chat() {
   return (

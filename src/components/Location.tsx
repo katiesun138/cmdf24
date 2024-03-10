@@ -5,7 +5,6 @@ import Map from './Map';
 interface MyLocation {
   long: number;
   lat: number;
-}
 
 const Location: React.FC = () => {
   const [myLoc, setMyLoc] = useState<MyLocation>({ long: 0, lat: 0 });
