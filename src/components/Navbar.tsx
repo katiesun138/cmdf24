@@ -54,7 +54,7 @@ const Navbar = () => {
           </Button>
         </Link>
 
-        <Link to="/chat">
+        <Link to="/community">
           <Button display="flex" width="2rem" alignItems="center" justifyContent="center" gap="0">
             <LuUsers2 />
             <Text fontSize="xs" color="black" textAlign="center">
