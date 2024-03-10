@@ -1,7 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function Location() {
-  return (
-    <div>THIS is LoCaTiOn</div>
-  )
+  return <div>THIS is LoCaTiOn</div>;
 }

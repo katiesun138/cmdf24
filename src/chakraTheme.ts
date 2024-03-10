@@ -10,7 +10,9 @@ const colors = {
     300: `#FAB9D8`,
   },
   hotpink: `#E92498`,
-  lighterpink: `#F6A8D4`,
+  lpink: `#F6A8D4`,
+  lorange: `#FDC7AB`,
+
   secondary: {
     700: `#20A1A2`,
     500: `#52DEEB`,
@@ -32,6 +34,16 @@ const components = {
         textAlign: `left`,
         fontWeight: `auto`,
         lineHeight: `auto`,
+      },
+      white: {
+        background: `white`,
+        color: `black`,
+        borderRadius: `100px`,
+      },
+      hotpink: {
+        background: `#E92498`,
+        color: `white`,
+        borderRadius: `100px`,
       },
     },
   },

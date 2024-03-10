@@ -1,15 +1,37 @@
 import React from 'react';
 import { LuKeyboard, LuSend } from 'react-icons/lu';
-import { Input, Button, InputGroup, InputLeftElement, InputRightElement, Grid, Stack, Heading } from '@chakra-ui/react';
+import { Flex, Text, Image, Input, Button, InputGroup, InputLeftElement, InputRightElement, Grid, Stack, Heading } from '@chakra-ui/react';
 import ChatOption from './ChatOption';
 import Navbar from './NavBar';
 
-function Chat() {
+function Landing() {
   return (
     <Stack width="100%" height="100%" justifyContent="center" padding="0.5rem">
-      <Heading fontSize="md" fontWeight="600">
-        Suggested Topics
-      </Heading>
+      <Stack
+        gap="0"
+        alignItems="space-between"
+        padding="1.2rem"
+        width="100%"
+        bgGradient="linear(to-r, lpink, lorange)"
+        borderRadius="24px"
+        height="200px"
+      >
+        <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+        <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
+          <Heading fontSize="1.6rem">Get the help you need today.</Heading>
+          <Button variant="hotpink" paddingInline="36px">
+            Start
+          </Button>
+        </Stack>
+      </Stack>
+      <Flex width="100%" justifyContent="space-between">
+        <Heading fontSize="md" fontWeight="700" opacity="0.6">
+          Recommended Topics
+        </Heading>
+        <Text fontSize="sm" fontWeight="700" color="hotpink">
+          View all
+        </Text>
+      </Flex>
       <Grid
         templateColumns="repeat(2, 1fr)" // Adjust the number of columns as needed
         gap="6px" // Adjust the gap between grid items as needed
@@ -44,4 +66,4 @@ function Chat() {
   );
 }
 
-export default Chat;
+export default Landing;
