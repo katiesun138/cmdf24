@@ -1,8 +1,49 @@
 import React from 'react';
-import { LuKeyboard, LuSend, LuMoreHorizontal, LuBookmark } from 'react-icons/lu';
+import { LuMapPin, LuPhone } from 'react-icons/lu';
 import { Flex, Text, Image, Input, Button, InputGroup, InputLeftElement, InputRightElement, Grid, Stack, Heading } from '@chakra-ui/react';
 import ChatOption from './ChatOption';
 import TopicBox from './TopicBox';
+
+interface ClinicProps {
+  desc: string;
+  title: string;
+  image: string;
+  number: string;
+}
+
+function NearbyClinicBox({ desc, title, image, number }: ClinicProps) {
+  return (
+    <Stack
+      padding="0.5rem"
+      justifyContent="center"
+      gap="0.5rem"
+      alignItems="center"
+      borderRadius="24px"
+      width="250px"
+      height="250px"
+      border="1px solid rgba(0, 0, 0, 0.20)"
+    >
+      <Flex justifyContent="center" alignItems="center" borderRadius="4px" width="100%">
+        <Image borderRadius="12px" src={image} alt="Description of the image" />
+      </Flex>
+      <Stack gap="0" width="100%" paddingInline="0.5rem">
+        <Text fontWeight="800" fontSize="sm">
+          {title}
+        </Text>
+        <Flex gap="0.5rem">
+          <Text display="flex" alignItems="center" gap="0.2rem" color="black" opacity="0.6" fontSize="sm">
+            <LuMapPin />
+            {desc}
+          </Text>
+          <Text display="flex" alignItems="center" gap="0.2rem" color="black" opacity="0.6" fontSize="sm">
+            <LuPhone />
+            {number}
+          </Text>
+        </Flex>
+      </Stack>
+    </Stack>
+  );
+}
 
 function Landing() {
   return (
@@ -14,6 +55,7 @@ function Landing() {
         width="100%"
         bgGradient="linear(to-r, lpink, lorange)"
         borderRadius="24px"
+        justifyContent="space-between"
         height="200px"
       >
         <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '100px', maxHeight: '100px' }} />
@@ -55,37 +97,9 @@ function Landing() {
             View all
           </Text>
         </Flex>
+        <NearbyClinicBox number="604 739 9087" title="Vancouver Sunnyside Clinic" desc="bboogga" image="/Rectangle 22 (1).png" />
+        <NearbyClinicBox title="Planned Parenthood" desc="bboogga" image="/Rectangle 22.png" />
       </Stack>
-
-      <Grid
-        templateColumns="repeat(2, 1fr)" // Adjust the number of columns as needed
-        gap="6px" // Adjust the gap between grid items as needed
-        width="100%"
-      >
-        <ChatOption image="/egg-svgrepo-com 1 (2).svg" desc="Learn your rights" title="Fertility Rights" />
-        <ChatOption image="/eggIcon.svg" desc="Learn your rights" title="Fertility Rights" />
-        <ChatOption image="/femalesIcon.svg" desc="Learn your rights" title="Fertility Rights" />
-        <ChatOption image="/medicalIcon.svg" desc="Learn your rights" title="Fertility Rights" />
-      </Grid>
-      <InputGroup bg="#F8F8F8" borderRadius="100px" borderWidth="1px" borderColor="gray.300">
-        <InputLeftElement pointerEvents="none">
-          <LuKeyboard color="gray.300" />
-        </InputLeftElement>
-        <Input
-          type="tel"
-          border="none"
-          borderRadius="100px"
-          color="gray.600"
-          bg="none"
-          placeholder="Ask anything..."
-          _placeholder={{ color: 'gray.400', fontSize: 'sm' }}
-        />
-        <InputRightElement w="3.0rem">
-          <Button h="2.0rem" bg="hotpink" padding="0rem" borderRadius="100px">
-            <LuSend />
-          </Button>
-        </InputRightElement>
-      </InputGroup>
     </Stack>
   );
 }
