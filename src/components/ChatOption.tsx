@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Stack, Image } from '@chakra-ui/react';
+import { Flex, Text, Stack, Image } from '@chakra-ui/react';
 import React from 'react';
 
 interface ChatOptionProps {

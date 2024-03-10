@@ -69,8 +69,6 @@ export const chakraTheme = extendTheme({
     global: {
       body: {
         bg: 'white',
-      },
-      p: {
         color: 'black',
       },
     },
