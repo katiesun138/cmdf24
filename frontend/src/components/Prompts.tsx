@@ -1,7 +1,7 @@
 import React from 'react';
-import { LuKeyboard, LuSend } from 'react-icons/lu';
-import { Input, Button, InputGroup, InputLeftElement, InputRightElement, Stack, Heading, Box, Text } from '@chakra-ui/react';
-import ChatOption from './ChatOption';
+import { LuKeyboard, LuPenSquare, LuSend } from 'react-icons/lu';
+import { Input, Button, InputGroup, InputLeftElement, InputRightElement, Stack, Heading, Box, Text, Flex, Icon, Image} from '@chakra-ui/react';
+// import ChatOption from './ChatOption';
 
 interface PromptsProps {
   onClick: (message: string) => Promise<string>;
@@ -105,42 +105,72 @@ const Prompts:React.FC<PromptsProps> = ({ onClick }) =>  {
   };
 
       return (
-        <>
-          <Stack
-            spacing={2}
+        <Stack width="100%" height="100vh" justifyContent="flex-start" paddingInline={['1rem', '2rem', '8rem']} gap="1.6rem" maxWidth="1200px">
+          <Flex
+            paddingBlock="0.5rem"
             position="sticky"
-            overflow="scrollX"
-            bottom="6rem"
-            direction="column"
-            alignItems="flex-end"
-            justifyContent="flex-end"
-            height="100%"
+            top="0"
+            bg="peach"
+            // borderBottom="1px solid rgba(0, 0, 0, 0.20)"
+            justifyContent="space-between"
+            alignItems="center"
+            width="100%"
           >
-            {messages.map((msg, index) =>
-              msg.type === 'prompt' ? (
-                <Button key={msg.type} width="fit-content" alignSelf="flex-start" p={2} onClick={() => handleClick(msg.content)}>
-                  <Text color="black" padding="0.5rem">
-                    {msg.content}
-                  </Text>
-                </Button>
-              ) : (
-                <Box
-                  key={index}
-                  textAlign={msg.type === 'answer' ? 'right' : 'left'}
-                  bg={msg.type === 'answer' ? 'hotpink' : '#FFFFFF'}
-                  alignSelf={msg.type === 'answer' ? 'flex-end' : 'flex-start'}
-                  width="fit-content"
-                  p={2}
-                  borderRadius={msg.type === 'answer' ? '24px 24px 0 24px' : '24px 24px 24px 0 '}
-                >
-                  <Text color={msg.type === 'answer' ? 'white' : 'black'} padding="0.5rem">
-                    {msg.content}
-                  </Text>
-                </Box>
-              ),
-            )}
+            <Flex gap="0.5rem" alignItems="center">
+              <Button paddingInline="0" color="black">
+                <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '1.6rem', maxHeight: '100px' }} />
+              </Button>
+            </Flex>
+            <Heading fontSize="md" fontWeight="600">
+              Chat with BigSister
+            </Heading>
+          </Flex>
+          <Stack height="100vh" overflow="scrollX">
+            <Stack
+              spacing={2}
+              overflowY="auto"
+              bottom="6rem"
+              paddingBottom="1rem"
+              direction="column"
+              alignItems="flex-end"
+              justifyContent="flex-end"
+              height="80%"
+            >
+              {messages.map((msg, index) =>
+                msg.type === 'prompt' ? (
+                  <Button
+                    key={msg.type}
+                    width="fit-content"
+                    textAlign='left'
+                    alignSelf="flex-start"
+                    p={2}
+                    bg="#FFFFFF"
+                    borderRadius="24px 24px 24px 0"
+                    onClick={() => handleClick(msg.content)}
+                  >
+                    <Text color="black" padding="0.5rem">
+                      {msg.content}
+                    </Text>
+                  </Button>
+                ) : (
+                  <Box
+                    key={index}
+                    textAlign={msg.type === 'answer' ? 'right' : 'left'}
+                    bg={msg.type === 'answer' ? 'hotpink' : '#FFFFFF'}
+                    alignSelf={msg.type === 'answer' ? 'flex-end' : 'flex-start'}
+                    width="fit-content"
+                    p={2}
+                    borderRadius={msg.type === 'answer' ? '24px 24px 0 24px' : '24px 24px 24px 0 '}
+                  >
+                    <Text color={msg.type === 'answer' ? 'white' : 'black'} padding="0.5rem">
+                      {msg.content}
+                    </Text>
+                  </Box>
+                ),
+              )}
+            </Stack>
           </Stack>
-        </>
+        </Stack>
       );
   };
 
