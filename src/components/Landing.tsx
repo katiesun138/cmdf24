@@ -1,12 +1,12 @@
 import React from 'react';
-import { LuKeyboard, LuSend } from 'react-icons/lu';
+import { LuKeyboard, LuSend, LuMoreHorizontal, LuBookmark } from 'react-icons/lu';
 import { Flex, Text, Image, Input, Button, InputGroup, InputLeftElement, InputRightElement, Grid, Stack, Heading } from '@chakra-ui/react';
 import ChatOption from './ChatOption';
 import Navbar from './NavBar';
 
 function Landing() {
   return (
-    <Stack width="100%" height="100%" justifyContent="center" padding="0.5rem">
+    <Stack width="100%" gap="1.6rem" height="100%" justifyContent="center" padding="0.5rem">
       <Stack
         gap="0"
         alignItems="space-between"
@@ -24,14 +24,38 @@ function Landing() {
           </Button>
         </Stack>
       </Stack>
-      <Flex width="100%" justifyContent="space-between">
-        <Heading fontSize="md" fontWeight="700" opacity="0.6">
-          Recommended Topics
-        </Heading>
-        <Text fontSize="sm" fontWeight="700" color="hotpink">
-          View all
-        </Text>
-      </Flex>
+      <Stack>
+        <Flex width="100%" justifyContent="space-between">
+          <Heading fontSize="md" fontWeight="700" opacity="0.6">
+            Recommended Topics
+          </Heading>
+          <Text fontSize="sm" fontWeight="700" color="hotpink">
+            View all
+          </Text>
+        </Flex>
+        <Stack gap="1rem" width="300px" padding="1rem" bg="peach" borderRadius="24px">
+          <Stack direction="row" justifyContent="space-between">
+            <Heading fontSize="md">How to deal with post menstrual syndrome</Heading>
+            <LuMoreHorizontal width="1rem" height="1rem" />
+          </Stack>
+          <Text fontSize="sm" noOfLines={3}>
+            Post-menstrual syndrome, also known as premenstrual dysphoric disorder (PMDD), refers to a condition where individuals experience severe
+            emotional and physical symptoms following their menstrual period. It can include mood swings, irritability, depression, anxiety, fatigue,
+            and physical discomfort.
+          </Text>
+          <Flex justifyContent="space-between">
+            <Button fontSize="sm" variant="white" gap="0.2rem">
+              <LuBookmark color="hotpink" width="md" height="md" />
+              Save
+            </Button>
+            <Image alignSelf="center" src="/Frame 1707478436.png" alt="Description of the image" style={{ maxWidth: '70px', maxHeight: '100px' }} />
+            <Button fontSize="sm" variant="hotpink" gap="0.2rem">
+              Read more
+            </Button>
+          </Flex>
+        </Stack>
+      </Stack>
+
       <Grid
         templateColumns="repeat(2, 1fr)" // Adjust the number of columns as needed
         gap="6px" // Adjust the gap between grid items as needed

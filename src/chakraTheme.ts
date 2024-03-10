@@ -12,6 +12,7 @@ const colors = {
   hotpink: `#E92498`,
   lpink: `#F6A8D4`,
   lorange: `#FDC7AB`,
+  peach: `#FEF6F7`,
 
   secondary: {
     700: `#20A1A2`,
@@ -63,8 +64,8 @@ const components = {
   Heading: {
     baseStyle: {
       fontFamily: `Nunito`,
+      fontWeight: `700`,
       color: 'black',
-      fontWeight: `light`,
       letterSpacing: `-0.03em`,
     },
   },
