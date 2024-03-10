@@ -106,75 +106,86 @@ const Prompts:React.FC<PromptsProps> = ({ onClick }) =>  {
   };
 
       return (
-        <Stack width="100%" height="100vh" justifyContent="flex-start" paddingInline={['1rem', '2rem', '8rem']} gap="1.6rem" maxWidth="1200px">
-          <Flex
-            paddingBlock="0.5rem"
-            position="sticky"
-            top="0"
-            bg="peach"
-            // borderBottom="1px solid rgba(0, 0, 0, 0.20)"
-            justifyContent="space-between"
-            alignItems="center"
-            width="100%"
-          >
-            <Flex gap="0.5rem" alignItems="center">
-              <Button paddingInline="0" color="black">
-                <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '1.6rem', maxHeight: '100px' }} />
-              </Button>
-            </Flex>
-            <Heading fontSize="md" fontWeight="600">
-              Chat with BigSister
-            </Heading>
-            <Link to="/livechat"><Button paddingInline="0" color="black">
-          <Icon as={LuPenSquare} boxSize="1.6rem" />
-        </Button></Link>
-          </Flex>
-          <Stack height="100vh" overflow="scrollX">
-            <Stack
-              spacing={2}
-              overflowY="auto"
-              bottom="6rem"
-              paddingBottom="1rem"
-              direction="column"
-              alignItems="flex-end"
-              justifyContent="flex-end"
-              height="80%"
+        <>
+          <Stack width="100%" height="100vh" justifyContent="flex-start" paddingInline={['1rem', '2rem', '8rem']} gap="1.6rem" maxWidth="1200px">
+            <Flex
+              paddingBlock="0.5rem"
+              position="sticky"
+              top="0"
+              bg="peach"
+              // borderBottom="1px solid rgba(0, 0, 0, 0.20)"
+              justifyContent="space-between"
+              alignItems="center"
+              width="100%"
             >
-              {messages.map((msg, index) =>
-                msg.type === 'prompt' ? (
-                  <Button
-                    key={msg.type}
-                    width="fit-content"
-                    textAlign='left'
-                    alignSelf="flex-start"
-                    p={2}
-                    bg="#FFFFFF"
-                    borderRadius="24px 24px 24px 0"
-                    onClick={() => handleClick(msg.content)}
-                  >
-                    <Text color="black" padding="0.5rem">
-                      {msg.content}
+              <Flex gap="0.5rem" alignItems="center">
+                <Button paddingInline="0" color="black">
+                  <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '1.6rem', maxHeight: '100px' }} />
+                </Button>
+              </Flex>
+              <Heading fontSize="md" fontWeight="600">
+                Chat with BigSister
+              </Heading>
+              <Link to="/livechat">
+                <Button paddingInline="0" color="black">
+                  <Icon as={LuPenSquare} boxSize="1.6rem" />
+                </Button>
+              </Link>
+            </Flex>
+            <Stack height="100vh" overflow="scrollX">
+              <Stack
+                spacing={2}
+                overflowY="auto"
+                bottom="6rem"
+                paddingBottom="1rem"
+                direction="column"
+                alignItems="flex-end"
+                justifyContent="flex-end"
+                height="80%"
+              >
+                {messages.length === 0 && (
+                  <Flex width="100%" justifyContent="center">
+                    <Text color="black" padding="0.5rem" fontSize="md" fontWeight="700">
+                      Please wait... BigSister is generating questions for you...
                     </Text>
-                  </Button>
-                ) : (
-                  <Box
-                    key={index}
-                    textAlign={msg.type === 'answer' ? 'right' : 'left'}
-                    bg={msg.type === 'answer' ? 'hotpink' : '#FFFFFF'}
-                    alignSelf={msg.type === 'answer' ? 'flex-end' : 'flex-start'}
-                    width="fit-content"
-                    p={2}
-                    borderRadius={msg.type === 'answer' ? '24px 24px 0 24px' : '24px 24px 24px 0 '}
-                  >
-                    <Text color={msg.type === 'answer' ? 'white' : 'black'} padding="0.5rem">
-                      {msg.content}
-                    </Text>
-                  </Box>
-                ),
-              )}
+                  </Flex>
+                )}
+                {messages.map((msg, index) =>
+                  msg.type === 'prompt' ? (
+                    <Button
+                      key={msg.type}
+                      width="max-width"
+                      textAlign="left"
+                      alignSelf="flex-start"
+                      p={2}
+                      bg="#FFFFFF"
+                      borderRadius="24px 24px 24px 0"
+                      onClick={() => handleClick(msg.content)}
+                    >
+                      <Text color="black" padding="0.5rem">
+                        {msg.content}
+                      </Text>
+                    </Button>
+                  ) : (
+                    <Box
+                      key={index}
+                      textAlign={msg.type === 'answer' ? 'right' : 'left'}
+                      bg={msg.type === 'answer' ? 'hotpink' : '#FFFFFF'}
+                      alignSelf={msg.type === 'answer' ? 'flex-end' : 'flex-start'}
+                      width="fit-content"
+                      p={2}
+                      borderRadius={msg.type === 'answer' ? '24px 24px 0 24px' : '24px 24px 24px 0 '}
+                    >
+                      <Text color={msg.type === 'answer' ? 'white' : 'black'} padding="0.5rem">
+                        {msg.content}
+                      </Text>
+                    </Box>
+                  ),
+                )}
+              </Stack>
             </Stack>
           </Stack>
-        </Stack>
+        </>
       );
   };
 
