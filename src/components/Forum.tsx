@@ -10,7 +10,7 @@ function Forum() {
 
   const addTopic = (desc: string, title: string): void => {
     const newTopic = <TopicBox key={topics.length + 1} width="100%" desc={desc} title={title} />;
-    setTopics(prevTopics => [...prevTopics, newTopic]); // Add the new topic to the topics state array
+    setTopics(prevTopics => [newTopic, ...prevTopics]); // Add the new topic to the beginning of the topics state array
   };
 
   useEffect(() => {
@@ -22,7 +22,14 @@ function Forum() {
   }, [contentVisible]);
   return (
     <Stack width="100%" paddingInline={['1rem', '2rem', '8rem']} height="100%" justifyContent="center" padding="0.5rem">
-      <Flex marginTop="0.5rem" justifyContent="space-between" alignItems="center" width="100%">
+      <Flex
+        paddingBlock="0.5rem"
+        borderBottom="1px solid rgba(0, 0, 0, 0.20)"
+        marginTop="0.5rem"
+        justifyContent="space-between"
+        alignItems="center"
+        width="100%"
+      >
         <Button paddingInline="0" color="black">
           <Icon as={LuSettings2} boxSize="1.6rem" />
         </Button>
@@ -31,7 +38,7 @@ function Forum() {
           <Icon as={LuPenSquare} boxSize="1.6rem" />
         </Button>
       </Flex>
-      <Flex gap="0.5rem" height={contentVisible ? 'fit-content' : 0} id="content">
+      <Flex marginBlock="0.5rem" gap="0.5rem" height={contentVisible ? 'fit-content' : 0} id="content">
         <Button variant="hotpink">Popular</Button>
         <Button color="black" bg="white" borderRadius="100px" opacity="0.87">
           Recommended
@@ -75,7 +82,7 @@ function Forum() {
           />
         </Stack>
       )}
-      {!contentVisible && <TinyComponent onClick={addTopic} />}
+      {!contentVisible && <TinyComponent onClick={addTopic} backToForum={() => setContentVisible(!contentVisible)} />}
     </Stack>
   );
 }

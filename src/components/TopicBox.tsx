@@ -17,9 +17,7 @@ function TopicBox({ desc, title, width }: TopicBoxProps) {
         </Heading>
         <LuMoreHorizontal width="1rem" height="1rem" />
       </Stack>
-      <Text fontSize="sm" noOfLines={3}>
-        {desc}
-      </Text>
+      <Text fontSize="sm" noOfLines={3} dangerouslySetInnerHTML={{ __html: desc }} />
       <Flex justifyContent="space-between">
         <Flex gap="0.5rem">
           <Button fontSize="sm" padding="0" variant="white" gap="0.2rem">

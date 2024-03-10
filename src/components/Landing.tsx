@@ -56,7 +56,14 @@ function Landing({ mgBot }: { mgBot: string }) {
       justifyContent="center"
       padding="0.5rem"
     >
-      <Flex marginTop="0.5rem" justifyContent="space-between" alignItems="center" width="100%">
+      <Flex
+        paddingBlock="0.5rem"
+        borderBottom="1px solid rgba(0, 0, 0, 0.20)"
+        marginTop="0.5rem"
+        justifyContent="space-between"
+        alignItems="center"
+        width="100%"
+      >
         <Button paddingInline="0" color="black">
           <Icon as={LuSettings2} boxSize="1.6rem" />
         </Button>

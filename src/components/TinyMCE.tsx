@@ -1,14 +1,15 @@
 import React, { ChangeEvent } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
-import { Button, Input } from '@chakra-ui/react';
+import { Button, Input, Flex } from '@chakra-ui/react';
 
 interface Props {
   onClick: (desc: string, title: string) => void; // Define the type of the prop
+  backToForum: () => void;
 }
 let contentOutput: string;
 let titleOutput: string;
 
-const MyEditor: React.FC<Props> = ({ onClick }) => {
+const MyEditor: React.FC<Props> = ({ onClick, backToForum }) => {
   const handleEditorChange = (content, editor) => {
     contentOutput = content;
   };
@@ -17,6 +18,7 @@ const MyEditor: React.FC<Props> = ({ onClick }) => {
   };
   const handleClick = () => {
     onClick(contentOutput, titleOutput);
+    backToForum();
   };
   return (
     <>
@@ -49,9 +51,14 @@ const MyEditor: React.FC<Props> = ({ onClick }) => {
         }}
         onEditorChange={handleEditorChange}
       />
-      <Button variant="hotpink" onClick={handleClick}>
-        Add Topic
-      </Button>
+      <Flex gap="0.5rem" justifyContent="flex-end">
+        <Button variant="white" paddingInline="32px">
+          Save as draft
+        </Button>
+        <Button variant="hotpink" paddingInline="32px" onClick={handleClick}>
+          Post
+        </Button>
+      </Flex>
     </>
   );
 };
