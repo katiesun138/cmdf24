@@ -1,15 +1,16 @@
-import { Flex, Text, Stack, Image, Heading, Button } from '@chakra-ui/react';
+import { Flex, Text, Stack, Image, Heading, Button, Icon } from '@chakra-ui/react';
 import React from 'react';
-import { LuBookmark, LuMoreHorizontal } from 'react-icons/lu';
+import { LuArrowRight, LuBookmark, LuMoreHorizontal } from 'react-icons/lu';
 
 interface TopicBoxProps {
   desc: string;
   title: string;
+  width: string;
 }
 
-function TopicBox({ desc, title }: TopicBoxProps) {
+function TopicBox({ desc, title, width }: TopicBoxProps) {
   return (
-    <Stack gap="1rem" width="300px" padding="1rem" bg="white" border="1px solid rgba(0, 0, 0, 0.20)" borderRadius="24px">
+    <Stack gap="1rem" width={width} padding="1rem" bg="white" border="1px solid rgba(0, 0, 0, 0.20)" borderRadius="24px">
       <Stack direction="row" justifyContent="space-between">
         <Heading fontSize="md" noOfLines={2} maxWidth="85%">
           {title}
@@ -20,13 +21,14 @@ function TopicBox({ desc, title }: TopicBoxProps) {
         {desc}
       </Text>
       <Flex justifyContent="space-between">
-        <Button fontSize="sm" variant="white" gap="0.2rem">
+        <Button fontSize="sm" padding="0" variant="white" gap="0.2rem">
           <LuBookmark color="hotpink" width="md" height="md" />
           Save
         </Button>
         <Image alignSelf="center" src="/Frame 1707478436.png" alt="Description of the image" style={{ maxWidth: '70px', maxHeight: '100px' }} />
         <Button fontSize="sm" variant="hotpink" gap="0.2rem">
           Read more
+          <Icon as={LuArrowRight} boxSize="1.0rem" />
         </Button>
       </Flex>
     </Stack>
