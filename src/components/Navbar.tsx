@@ -70,7 +70,6 @@ const Navbar = () => {
             </Flex>
           </Button>
         </Link>
-
         <Link to="/community">
           <Button
             display="flex" // Use flex display to align items
@@ -97,7 +96,6 @@ const Navbar = () => {
             alignItems="center"
             justifyContent="center"
             gap="0"
-          >
             <LuBookmark />
             <Text fontSize="xs" color="black" textAlign="center">
               Saved
