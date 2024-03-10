@@ -29,6 +29,9 @@ export const chakraTheme = extendTheme({
       body: {
         bg: 'white',
       },
+      p: {
+        color: 'black',
+      },
     },
   },
 });
