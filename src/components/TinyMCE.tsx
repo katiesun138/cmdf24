@@ -9,7 +9,7 @@ const MyEditor = () => {
   return (
     <Editor
       apiKey="otbou93omboff3xmdezdhk0ty9nxv45org5g34jkuiyq3q3z" // You can get an API key by signing up on the TinyMCE website
-      initialValue="<p>This is the initial content of the editor</p>"
+      initialValue=""
       init={{
         height: 500,
         menubar: false,
