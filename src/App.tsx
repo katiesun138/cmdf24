@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import ChatMenu from './components/ChatMenu';
-import ChatBackend from './components/ChatBackend';
+import Chat from './components/ChatBackend';
 import Location from './components/Location';
 import Learn from './components/Learn';
 import Prompts from './components/Prompts';
@@ -50,7 +50,7 @@ function App() {
           <Route path="/location" element={<Location/>} />
           <Route path="/learn" element={<Learn/>} />
           <Route path="/" element={<ChatMenu onClick={handleOptionClick}/>} />
-          {selectedOption === 'livechat' && <Route path="/livechat" element={<ChatBackend onSendMessage={handleSendMessage} />} />}
+          {selectedOption === 'livechat' && <Route path="/livechat" element={<Chat onSendMessage={handleSendMessage} />} />}
           {selectedOption === 'prompts' && <Route path="/prompts" element={<Prompts onClick={handleSendMessage} />} />}
         </Routes>
     </BrowserRouter>
