@@ -14,7 +14,7 @@ router.post('/', (req, res) => {
       message: "Can you provide an answer to this input in less than 200 words " + req.body.userInput,
       // perform web search before answering the question. You can also use your own custom connector.
       preambleOverride: 'You are a trusted big sister to help support women during their abortion process.',
-      connectors: [{ id: 'web-search' }],
+      // connectors: [{ id: 'web-search' }],
     });
 
     // build the full response message from cohere api
@@ -45,7 +45,7 @@ router.post('/prompts', (req, res) => {
       message: promptsAsk,
       // perform web search before answering the question. You can also use your own custom connector.
       preambleOverride: 'You are a trusted big sister to help support women during their abortion process.',
-      connectors: [{ id: 'web-search' }],
+      // connectors: [{ id: 'web-search' }],
     });
 
     // build the full response message from cohere api
