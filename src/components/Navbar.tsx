@@ -27,7 +27,7 @@ function Navbar() {
         justifyContent="space-between"
         width="100%"
       >
-        <Stack width="2rem" opacity="0.6" alignItems="center" justifyContent="center" gap="0">
+        <Stack width="2rem" alignItems="center" justifyContent="center" gap="0">
           <LuHome />
           <Text fontSize="xs" color="black" textAlign="center">
             Home
