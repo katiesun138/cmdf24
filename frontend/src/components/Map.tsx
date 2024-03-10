@@ -71,7 +71,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, Circle } from '@react-google-maps/api';
-import { Box, Text, ButtonGroup, Card, CardBody, Flex, Heading, Icon, Link, filter, Stack } from '@chakra-ui/react';
+import { Box, Text, ButtonGroup, Card, CardBody, Flex, Heading, Icon, Link, filter, Stack, Select } from '@chakra-ui/react';
 import Header from './Header';
 import { click } from '@testing-library/user-event/dist/click';
 import { AdvancedMarker } from '@vis.gl/react-google-maps';
@@ -96,6 +96,13 @@ const Map = () => {
   const [map, setMap] = React.useState(null);
   const [firstLocation, setFirstLocation] = useState({ long: Number, lat: Number });
   const [showFilteredClinics, setShowFilteredClinics] = useState(false);
+  const [selectedRadius, setSelectedRadius] = useState(5);
+
+  // Function to handle radius change
+  const handleRadiusChange = (event: any) => {
+    setSelectedRadius(event.target.value);
+    console.log(`${event.target.value}`)
+  };
 
   const [locationClicked, setLocationClicked] = useState(false);
   useEffect(() => {
@@ -146,7 +153,7 @@ const Map = () => {
 
   const filteredClinics = clinicdata.filter(clinic => {
     const distance = getDistance(markerPosition.lat, markerPosition.lng, clinic.latitude, clinic.longitude);
-    return distance <= 2.1; // Adjust the radius as needed
+    return distance <= selectedRadius; // Adjust the radius as needed
   });
 
   return isLoaded ? (
@@ -191,9 +198,7 @@ const Map = () => {
             </>
           )}
           <Marker position={{ lat: markerPosition.lat, lng: markerPosition.lng }} />
-          <Circle center={{ lat: markerPosition.lat, lng: markerPosition.lng }} radius={700} options={closeOptions}></Circle>
-          <Circle center={{ lat: markerPosition.lat, lng: markerPosition.lng }} radius={1400} options={middleOptions}></Circle>
-          <Circle center={{ lat: markerPosition.lat, lng: markerPosition.lng }} radius={2100} options={farOptions}></Circle>
+          <Circle center={{ lat: markerPosition.lat, lng: markerPosition.lng }} radius={Number(selectedRadius)*1000} options={closeOptions}></Circle>
         </GoogleMap>
         {!locationClicked && (
           <div style={{ zIndex: '3', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center' }}>
@@ -221,6 +226,13 @@ const Map = () => {
       >
         {showFilteredClinics && (
           <Stack>
+            <Select value={selectedRadius} onChange={handleRadiusChange} maxWidth="150px" mb="4">
+              {[1,3,5, 10, 15, 20, 25].map(radius => (
+                <option key={radius} value={radius}>
+                  {`${radius} km`}
+                </option>
+              ))}
+            </Select>
             <Heading fontSize="lg">Nearby clinics</Heading>
             <Flex direction="column" align="left" width="100%">
               {filteredClinics.length > 0 ? (
@@ -263,66 +275,6 @@ const Map = () => {
   );
 };
 
-//   return isLoaded ? (
-//     <>
-
-//       <GoogleMap
-//         mapContainerStyle={containerStyle}
-//         center={{ lat: 49.2599, lng: -123.13 }}
-//         zoom={11.5}
-//         onLoad={onLoad}
-//         onUnmount={onUnmount}
-//         onClick={anotherMarker}
-//       >
-//         {showFilteredClinics && (
-//           <>
-//             {filteredClinics.map((clinic, index) => (
-//               <Marker key={index} position={{ lat: clinic.latitude, lng: clinic.longitude }} />
-//             ))}
-//           </>
-//         )}
-//         <Marker position={{ lat: markerPosition.lat, lng: markerPosition.lng }} />
-//         <Circle center={{ lat: markerPosition.lat, lng: markerPosition.lng }} radius={700} options={closeOptions}></Circle>
-//         <Circle center={{ lat: markerPosition.lat, lng: markerPosition.lng }} radius={1400} options={middleOptions}></Circle>
-//         <Circle center={{ lat: markerPosition.lat, lng: markerPosition.lng }} radius={2100} options={farOptions}></Circle>
-
-//         <></>
-//       </GoogleMap>
-
-//       {showFilteredClinics && filteredClinics.length > 0 ? (
-//         <>
-//           {filteredClinics.map((clinic, index) => (
-//             <Box key={index} boxShadow="md" borderWidth="1px" borderRadius="md" marginBottom="4">
-//               <Heading size="md" p="4">
-//                 <Link href={clinic.url} textDecoration="none" color="blue.500" _hover={{ color: 'blue.700' }}>
-//                   {clinic.name}
-//                 </Link>
-//                 <Box color="gray.600" fontSize="sm">
-//                   {clinic.phone}
-//                 </Box>
-//                 <Box color="gray.600">{clinic.addr}</Box>
-//               </Heading>
-//             </Box>
-//           ))}
-//         </>
-//       ) : (
-//         showFilteredClinics && (
-//           <Box boxShadow="md" borderWidth="1px" borderRadius="md" p="4">
-//             <Heading size="md">No clinics within your selected radius</Heading>
-//           </Box>
-//         )
-//       )}
-
-//       <div>
-//         <Button colorScheme="blue" onClick={clickMe}>
-//           Search Surroundings
-//         </Button>
-//       </div>
-//     </>
-//   ) : (
-//     <></>
-//   );
-// };
 
 export default React.memo(Map);
 function setMarkers(arg0: (prevMarkers: any) => any[]) {
