@@ -52,7 +52,7 @@ function Info({ mgBot }: { mgBot: string }) {
         </Flex>
         <Flex width="100%" justifyContent="space-between">
           <Text fontSize="md" fontWeight="500" text-align="center">
-            At BigSister, we believe everyone should have easy and accessible to health. This is why we provide a free live ChatBot, an interactive map of nearby clinics and a forum with health practitioners for accurate and safe abortion information. 
+            At BigSister, we believe everyone should have easy and accessible access to health. This is why we provide a free live ChatBot, an interactive map of nearby clinics and a forum with health practitioners for accurate and safe information. 
           </Text>
         </Flex>
         <Flex width="100%" justifyContent="space-between">
