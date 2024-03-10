@@ -21,11 +21,14 @@ function TopicBox({ desc, title, width }: TopicBoxProps) {
         {desc}
       </Text>
       <Flex justifyContent="space-between">
-        <Button fontSize="sm" padding="0" variant="white" gap="0.2rem">
-          <LuBookmark color="hotpink" width="md" height="md" />
-          Save
-        </Button>
-        <Image alignSelf="center" src="/Frame 1707478436.png" alt="Description of the image" style={{ maxWidth: '70px', maxHeight: '100px' }} />
+        <Flex gap="0.5rem">
+          <Button fontSize="sm" padding="0" variant="white" gap="0.2rem">
+            <LuBookmark color="hotpink" width="md" height="md" />
+            Save
+          </Button>
+          <Image alignSelf="center" src="/Frame 1707478436.png" alt="Description of the image" style={{ maxWidth: '70px', maxHeight: '100px' }} />
+        </Flex>
+
         <Button fontSize="sm" variant="hotpink" gap="0.2rem">
           Read more
           <Icon as={LuArrowRight} boxSize="1.0rem" />
