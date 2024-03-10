@@ -74,10 +74,12 @@ function Landing({ mgBot }: { mgBot: string }) {
           <Heading fontSize="1.6rem" color="white" textShadow="0 1px 2px rgba(0, 0, 10, 0.2)">
             Big Sister is here to help!
           </Heading>
-          <Link to="/chat"><Button variant="white" color="#BB0038" paddingInline="36px" gap="0.5rem">
-            Start
-            <Icon as={LuArrowRight} boxSize="1.0rem" />
-          </Button></Link>
+          <Link to="/chat">
+            <Button variant="white" color="#BB0038" paddingInline="36px" gap="0.5rem">
+              Start
+              <Icon as={LuArrowRight} boxSize="1.0rem" />
+            </Button>
+          </Link>
         </Stack>
       </Stack>
       <Stack>
@@ -85,9 +87,11 @@ function Landing({ mgBot }: { mgBot: string }) {
           <Heading fontSize="md" fontWeight="700">
             Recommended topics
           </Heading>
-          <Text fontSize="sm" fontWeight="700" color="hotpink">
-            View all
-          </Text>
+          <Link to={'community'}>
+            <Text fontSize="sm" fontWeight="700" color="hotpink">
+              View all
+            </Text>
+          </Link>
         </Flex>
         <Flex gap="0.5rem" overflow="hidden">
           <TopicBox
@@ -121,9 +125,11 @@ function Landing({ mgBot }: { mgBot: string }) {
           <Heading fontSize="md" fontWeight="700">
             Clinics near you
           </Heading>
-          <Text fontSize="sm" fontWeight="700" color="hotpink">
-            View all
-          </Text>
+          <Link to={'location'} >
+            <Text fontSize="sm" fontWeight="700" color="hotpink">
+              View all
+            </Text>
+          </Link>
         </Flex>
         <Flex gap="0.5rem" overflow="hidden">
           <NearbyClinicBox number="604 739 9087" title="Vancouver Sunnyside Clinic" desc="1.6 km" image="/Rectangle 22 (1).png" />

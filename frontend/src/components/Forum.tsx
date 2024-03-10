@@ -59,9 +59,9 @@ function Forum() {
             </Button>
           </InputRightElement>
         </InputGroup>
-        <Link to="/livechat"><Button paddingInline="0" color="black" onClick={() => setContentVisible(!contentVisible)}>
+        <Button paddingInline="0" color="black" onClick={() => setContentVisible(!contentVisible)}>
           <Icon as={LuPenSquare} boxSize="1.6rem" />
-        </Button></Link>
+        </Button>
       </Flex>
       <Flex marginBlock="0.5rem" gap="0.5rem" height={contentVisible ? 'fit-content' : 0} id="content">
         <Button variant="hotpink">Popular</Button>
