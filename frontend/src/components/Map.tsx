@@ -71,9 +71,11 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, Circle } from '@react-google-maps/api';
-import { Box, Button, ButtonGroup, Card, CardBody, Flex, Heading, Link, filter } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Card, CardBody, Flex, Heading, Icon, Link, filter } from '@chakra-ui/react';
+import Header from './Header';
 import { click } from '@testing-library/user-event/dist/click';
 import { AdvancedMarker } from '@vis.gl/react-google-maps';
+import { LuArrowUpRight, LuMapPin, LuPhone } from 'react-icons/lu';
 
 const Map = () => {
   interface MyLocation {
@@ -96,7 +98,6 @@ const Map = () => {
   const [showFilteredClinics, setShowFilteredClinics] = useState(false);
 
   const [locationClicked, setLocationClicked] = useState(false);
-
   useEffect(() => {
     // Get location when the component mounts
     if (navigator.geolocation) {
@@ -135,11 +136,12 @@ const Map = () => {
     setMarkerPosition({ lat: clickedLat, lng: clickedLng });
     setLocationClicked(true);
     setShowFilteredClinics(false);
+    clickMe();
   };
 
   const clickMe = () => {
     if (!locationClicked) {
-      alert('Please select a location');
+      // alert('Please select a location');
     } else {
       setShowFilteredClinics(true);
       console.log('I HAVE SELECTED A LOCATION!!!!!');
@@ -156,57 +158,89 @@ const Map = () => {
       direction="column"
       align="center"
       justify="center"
-      height="95vh"
-      width="80vh"
+      width="100%"
+      gap="0rem"
+      paddingInline={['1rem', '2rem', '8rem']}
+      maxWidth="1200px"
       marginBottom={filteredClinics.length > 1 ? 14 : 4}
       overflow="auto"
     >
-      <Heading as="h2" size="xl">
-        Search for Nearby Clinics
-      </Heading>
-
-      <GoogleMap
-        mapContainerStyle={{ width: '100%', height: '70vh', zIndex: 1 }}
-        center={{ lat: 49.2599, lng: -123.13 }}
-        zoom={11.5}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
-        onClick={anotherMarker}
-      >
-        {/* Your map markers and circles */}
-        {showFilteredClinics && (
-          <>
-            {filteredClinics.map((clinic, index) => (
-              <Marker key={index} position={{ lat: clinic.latitude, lng: clinic.longitude }} />
-            ))}
-          </>
+      <Header />
+      <Flex width="100%" height={['300px', '300px', '500px']}>
+        <GoogleMap
+          mapContainerStyle={{
+            width: '100%',
+            filter: locationClicked ? 'brightness(100%)' : 'brightness(70%)',
+            marginBlock: '0.5rem',
+            borderRadius: '24px',
+            border: '1px solid rgba(0, 0, 0, 0.20)',
+            height: '100%',
+            zIndex: 1,
+          }}
+          center={{ lat: 49.2599, lng: -123.13 }}
+          zoom={11.5}
+          onLoad={onLoad}
+          onUnmount={onUnmount}
+          onClick={anotherMarker}
+        >
+          <Heading color="white">Click anywhere on the map...</Heading>
+          {/* Your map markers and circles */}
+          {showFilteredClinics && (
+            <>
+              {filteredClinics.map((clinic, index) => (
+                <Marker key={index} position={{ lat: clinic.latitude, lng: clinic.longitude }} />
+              ))}
+            </>
+          )}
+          <Marker position={{ lat: markerPosition.lat, lng: markerPosition.lng }} />
+          <Circle center={{ lat: markerPosition.lat, lng: markerPosition.lng }} radius={700} options={closeOptions}></Circle>
+          <Circle center={{ lat: markerPosition.lat, lng: markerPosition.lng }} radius={1400} options={middleOptions}></Circle>
+          <Circle center={{ lat: markerPosition.lat, lng: markerPosition.lng }} radius={2100} options={farOptions}></Circle>
+        </GoogleMap>
+        {!locationClicked && (
+          <div style={{ zIndex: '3', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center' }}>
+            <Heading color="white" textShadow="0 1px 2px rgba(0, 0, 10, 0.2)">
+              Click anywhere on the map...
+            </Heading>
+          </div>
         )}
-        <Marker position={{ lat: markerPosition.lat, lng: markerPosition.lng }} />
-        <Circle center={{ lat: markerPosition.lat, lng: markerPosition.lng }} radius={700} options={closeOptions}></Circle>
-        <Circle center={{ lat: markerPosition.lat, lng: markerPosition.lng }} radius={1400} options={middleOptions}></Circle>
-        <Circle center={{ lat: markerPosition.lat, lng: markerPosition.lng }} radius={2100} options={farOptions}></Circle>
-      </GoogleMap>
+      </Flex>
 
-      <Box width="100%" p="4">
-        <Button colorScheme="blue" onClick={clickMe} width="100%" mt="4">
+      {/* <Box width="100%">
+        <Button variant="hotpink" onClick={clickMe} paddingInline="36px">
           Search Surroundings
         </Button>
-      </Box>
+      </Box> */}
 
       {showFilteredClinics && (
-        <Box width="100%" maxHeight="50vh" overflowY="auto">
+        <Box
+          boxShadow="0 -4px 12px rgba(0, 0, 10, 0.2)"
+          width="100%"
+          zIndex="3"
+          bg="white"
+          padding="24px"
+          borderRadius="24px"
+          maxHeight="50vh"
+          overflowY="auto"
+        >
+          <Heading fontSize="lg">Nearby clinics</Heading>
           <Flex direction="column" align="left" width="100%" paddingBottom={50}>
             {filteredClinics.length > 0 ? (
               filteredClinics.map((clinic, index) => (
-                <Box key={index} width="100%" boxShadow="md" borderWidth="1px" borderRadius="md" marginBottom="4">
-                  <Heading size="md" p="4">
+                <Box key={index} width="100%" borderWidth="1px" borderRadius="md" marginBottom="4">
+                  <Heading size="1rem">
                     <Link href={clinic.url} textDecoration="none" color="blue.500" _hover={{ color: 'blue.700' }}>
                       {clinic.name}
+                      <Icon as={LuArrowUpRight} marginLeft="0.3rem" boxSize="1.0rem" />
                     </Link>
-                    <Box color="gray.600" fontSize="sm">
+                    <Box display="flex" alignItems="center" noOfLines={1} gap="0.5rem" color="#404353" opacity="0.6" fontSize="sm">
+                      <Icon as={LuPhone} boxSize="1.0rem" />
                       {clinic.phone}
+                      <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm" maxWidth="80%">
+                        <Icon as={LuMapPin} boxSize="1.0rem" />
+                        {clinic.addr}
+                      </Box>
                     </Box>
-                    <Box color="gray.600">{clinic.addr}</Box>
                   </Heading>
                 </Box>
               ))

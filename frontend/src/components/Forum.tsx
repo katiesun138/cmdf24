@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { LuSettings2, LuPenSquare } from 'react-icons/lu';
 import TinyComponent from './TinyMCE';
 import { Stack, Image, Flex, Button, Heading, Icon, Input } from '@chakra-ui/react';
+import Header from './Header';
 
 function Forum() {
   const [contentVisible, setContentVisible] = useState(true);
@@ -22,22 +23,7 @@ function Forum() {
   }, [contentVisible]);
   return (
     <Stack width="100%" maxWidth="1200px" paddingInline={['1rem', '2rem', '8rem']} height="100%" justifyContent="center" padding="0.5rem">
-      <Flex
-        paddingBlock="0.5rem"
-        borderBottom="1px solid rgba(0, 0, 0, 0.20)"
-        marginTop="0.5rem"
-        justifyContent="space-between"
-        alignItems="center"
-        width="100%"
-      >
-        <Button paddingInline="0" color="black">
-          <Icon as={LuSettings2} boxSize="1.6rem" />
-        </Button>
-        <Heading fontSize="xl">BigSister</Heading>
-        <Button paddingInline="0" color="black" onClick={() => setContentVisible(!contentVisible)}>
-          <Icon as={LuPenSquare} boxSize="1.6rem" />
-        </Button>
-      </Flex>
+      <Header />
       <Flex marginBlock="0.5rem" gap="0.5rem" height={contentVisible ? 'fit-content' : 0} id="content">
         <Button variant="hotpink">Popular</Button>
         <Button color="black" bg="white" borderRadius="100px" opacity="0.87">

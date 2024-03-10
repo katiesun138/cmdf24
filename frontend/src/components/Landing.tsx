@@ -1,4 +1,3 @@
-import React from 'react';
 import { LuMapPin, LuPhone, LuArrowRight, LuPenSquare, LuSettings2, LuSend } from 'react-icons/lu';
 import { Flex, Text, Image, Icon, Input, Button, Stack, Heading, InputGroup, InputRightElement } from '@chakra-ui/react';
 import TopicBox from './TopicBox';

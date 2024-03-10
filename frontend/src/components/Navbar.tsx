@@ -9,6 +9,7 @@ const Navbar = () => {
       position="fixed"
       bottom="0.5rem"
       color="white"
+      zIndex="100"
       paddingInline={['2rem', '4rem', '8rem']}
       justifySelf="center"
       justifyContent="space-between"
