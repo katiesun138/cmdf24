@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
+import ChatOption from './ChatOption';
 
-const Chat = () =>  {
-  return (
-    <div>THIS IS THE CHAT</div>
-  )
+function Chat() {
+  return <ChatOption />;
 }
 
-export default Chat
+export default Chat;
