@@ -1,7 +1,8 @@
 import React from 'react';
-import { LuMapPin, LuPhone, LuArrowRight } from 'react-icons/lu';
-import { Flex, Text, Image, Icon, Input, Button, Stack, Heading } from '@chakra-ui/react';
+import { LuMapPin, LuPhone, LuArrowRight, LuPenSquare, LuSettings2, LuSend } from 'react-icons/lu';
+import { Flex, Text, Image, Icon, Input, Button, Stack, Heading, InputGroup, InputRightElement } from '@chakra-ui/react';
 import TopicBox from './TopicBox';
+import Header from './Header';
 
 interface ClinicProps {
   desc: string;
@@ -52,10 +53,12 @@ function Landing({ mgBot }: { mgBot: string }) {
       marginBottom={mgBot}
       paddingInline={['1rem', '2rem', '8rem']}
       gap="1.6rem"
+      maxWidth="1200px"
       height="100%"
       justifyContent="center"
       padding="0.5rem"
     >
+      <Header />
       <Stack
         gap="0"
         alignItems="space-between"

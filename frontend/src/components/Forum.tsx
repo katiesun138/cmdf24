@@ -21,7 +21,7 @@ function Forum() {
     }
   }, [contentVisible]);
   return (
-    <Stack width="100%" paddingInline={['1rem', '2rem', '8rem']} height="100%" justifyContent="center" padding="0.5rem">
+    <Stack width="100%" maxWidth="1200px" paddingInline={['1rem', '2rem', '8rem']} height="100%" justifyContent="center" padding="0.5rem">
       <Flex
         paddingBlock="0.5rem"
         borderBottom="1px solid rgba(0, 0, 0, 0.20)"
