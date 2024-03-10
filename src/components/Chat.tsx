@@ -11,7 +11,7 @@ function Chat() {
         Suggested Topics
       </Heading>
       <Grid
-        templateColumns="repeat(2, 1fr)" // Adjust the number of columns as needed
+        templateColumns={['repeat(2, 1fr)', 'repeat(auto-fill, minmax(200px, 1fr))']} // Adjust the number of columns as needed
         gap="6px" // Adjust the gap between grid items as needed
         width="100%"
       >

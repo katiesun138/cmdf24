@@ -2,11 +2,11 @@ import React from 'react';
 import { LuKeyboard, LuSend, LuMoreHorizontal, LuBookmark } from 'react-icons/lu';
 import { Flex, Text, Image, Input, Button, InputGroup, InputLeftElement, InputRightElement, Grid, Stack, Heading } from '@chakra-ui/react';
 import ChatOption from './ChatOption';
-import Navbar from './NavBar';
+import TopicBox from './TopicBox';
 
 function Landing() {
   return (
-    <Stack width="100%" gap="1.6rem" height="100%" justifyContent="center" padding="0.5rem">
+    <Stack width="100%" paddingInline={['1rem', '2rem', '8rem']} gap="1.6rem" height="100%" justifyContent="center" padding="0.5rem">
       <Stack
         gap="0"
         alignItems="space-between"
@@ -33,27 +33,28 @@ function Landing() {
             View all
           </Text>
         </Flex>
-        <Stack gap="1rem" width="300px" padding="1rem" bg="peach" borderRadius="24px">
-          <Stack direction="row" justifyContent="space-between">
-            <Heading fontSize="md">How to deal with post menstrual syndrome</Heading>
-            <LuMoreHorizontal width="1rem" height="1rem" />
-          </Stack>
-          <Text fontSize="sm" noOfLines={3}>
-            Post-menstrual syndrome, also known as premenstrual dysphoric disorder (PMDD), refers to a condition where individuals experience severe
-            emotional and physical symptoms following their menstrual period. It can include mood swings, irritability, depression, anxiety, fatigue,
-            and physical discomfort.
+        <Flex gap="0.5rem">
+          <TopicBox
+            desc="Post-menstrual syndrome, also known as premenstrual dysphoric disorder (PMDD), refers to a condition where individuals experience severe
+        emotional and physical symptoms following their menstrual period. It can include mood swings, irritability, depression, anxiety, fatigue, and
+        physical discomfort."
+            title="How to Deal with Post Menstrual Syndrome"
+          />
+          <TopicBox
+            desc="In the complex landscape of intimate relationships, the dynamics between partners can sometimes take a harmful turn, leading to emotional, psychological, or physical abuse. Recognizing the signs of an abusive relationship is crucial for individuals to protect themselves and seek the support they need. Abuse can manifest in various forms, often insidious and difficult to detect at first glance. Understanding these signs can be the first step towards breaking free from the cycle of abuse and seeking healing."
+            title="Recognizing the Signs of an Abusive Relationship: A Vital Step Towards Safety and Healing"
+          />
+        </Flex>
+      </Stack>
+      <Stack>
+        <Flex width="100%" justifyContent="space-between">
+          <Heading fontSize="md" fontWeight="700" opacity="0.6">
+            Nearby Clinics
+          </Heading>
+          <Text fontSize="sm" fontWeight="700" color="hotpink">
+            View all
           </Text>
-          <Flex justifyContent="space-between">
-            <Button fontSize="sm" variant="white" gap="0.2rem">
-              <LuBookmark color="hotpink" width="md" height="md" />
-              Save
-            </Button>
-            <Image alignSelf="center" src="/Frame 1707478436.png" alt="Description of the image" style={{ maxWidth: '70px', maxHeight: '100px' }} />
-            <Button fontSize="sm" variant="hotpink" gap="0.2rem">
-              Read more
-            </Button>
-          </Flex>
-        </Stack>
+        </Flex>
       </Stack>
 
       <Grid
@@ -85,7 +86,6 @@ function Landing() {
           </Button>
         </InputRightElement>
       </InputGroup>
-      <Navbar />
     </Stack>
   );
 }
