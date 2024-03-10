@@ -1,5 +1,6 @@
 import React from 'react';
 import { LuKeyboard, LuPenSquare, LuSend } from 'react-icons/lu';
+import { Link } from 'react-router-dom';
 import { Input, Button, InputGroup, InputLeftElement, InputRightElement, Stack, Heading, Box, Text, Flex, Icon, Image} from '@chakra-ui/react';
 // import ChatOption from './ChatOption';
 
@@ -124,6 +125,9 @@ const Prompts:React.FC<PromptsProps> = ({ onClick }) =>  {
             <Heading fontSize="md" fontWeight="600">
               Chat with BigSister
             </Heading>
+            <Link to="/livechat"><Button paddingInline="0" color="black">
+          <Icon as={LuPenSquare} boxSize="1.6rem" />
+        </Button></Link>
           </Flex>
           <Stack height="100vh" overflow="scrollX">
             <Stack
