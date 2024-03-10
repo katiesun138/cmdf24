@@ -33,7 +33,7 @@ export default function Header() {
         borderWidth="1px" // Set the border width to 1px
         color="gray.800"
       >
-        <Input borderRadius="100px" placeholder="Ask any question..." _placeholder={{ color: 'gray.400', fontSize: 'sm' }} />
+        <Input borderRadius="100px" placeholder="Ask any question..." _placeholder={{ color: 'gray.500', fontSize: 'sm' }} />
         <InputRightElement w="3.0rem">
           <Button h="2.0rem" bg="hotpink" padding="0rem" borderRadius="100px">
             <LuSend />

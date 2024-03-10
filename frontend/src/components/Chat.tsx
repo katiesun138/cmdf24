@@ -113,7 +113,7 @@ const Chat: React.FC<ChatProps> = ({ onSendMessage }) => {
           bottom="5rem"
           width="100%"
           justifySelf="center"
-          bg="#F8F8F8"
+          bg="white"
           borderRadius="100px"
           borderWidth="1px"
           borderColor="gray.300"
@@ -128,7 +128,7 @@ const Chat: React.FC<ChatProps> = ({ onSendMessage }) => {
             width="100%"
             bg="none"
             placeholder="Ask anything..."
-            _placeholder={{ color: 'gray.400', fontSize: 'sm' }}
+            _placeholder={{ color: 'gray.500', fontSize: 'sm' }}
             value={message}
             onChange={e => setMessage(e.target.value)}
           />

@@ -101,7 +101,7 @@ const Map = () => {
   // Function to handle radius change
   const handleRadiusChange = (event: any) => {
     setSelectedRadius(event.target.value);
-    console.log(`${event.target.value}`)
+    console.log(`${event.target.value}`);
   };
 
   const [locationClicked, setLocationClicked] = useState(false);
@@ -198,7 +198,11 @@ const Map = () => {
             </>
           )}
           <Marker position={{ lat: markerPosition.lat, lng: markerPosition.lng }} />
-          <Circle center={{ lat: markerPosition.lat, lng: markerPosition.lng }} radius={Number(selectedRadius)*1000} options={closeOptions}></Circle>
+          <Circle
+            center={{ lat: markerPosition.lat, lng: markerPosition.lng }}
+            radius={Number(selectedRadius) * 1000}
+            options={closeOptions}
+          ></Circle>
         </GoogleMap>
         {!locationClicked && (
           <div style={{ zIndex: '3', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center' }}>
@@ -214,67 +218,73 @@ const Map = () => {
           Search Surroundings
         </Button>
       </Box> */}
-      <Box boxShadow="0 -4px 12px rgba(0, 0, 10, 0.2)" width="100%" zIndex="3" bg="white" padding="24px" borderRadius="24px" maxHeight="50vh">
-        {showFilteredClinics && (
-          <Stack>
-            <Select value={selectedRadius} onChange={handleRadiusChange} maxWidth="150px" mb="4">
-              {[1,3,5, 10, 15, 20, 25].map(radius => (
-                <option key={radius} value={radius}>
-                  {`${radius} km`}
-                </option>
-              ))}
-            </Select>
-            <Heading fontSize="lg">Nearby clinics</Heading>
-            <Flex direction="column" gap={['0', '0', '1rem']} align="left" width="100%">
-              {filteredClinics.length > 0 ? (
-                filteredClinics.map((clinic, index) => (
-                  <Flex key={index} justifyContent="space-between" width="100%" paddingBlock="0.2rem" borderWidth="1px" borderRadius="md">
-                    <Stack maxWidth="60%">
-                      <Heading size="1rem">
-                        <Link href={clinic.url} noOfLines={1} textDecoration="none" color="black" _hover={{ color: 'blue.700' }}>
-                          {clinic.name}
-                        </Link>
-                        <Flex direction={['column', 'column', 'row']} opacity="0.6" gap={['0', '0', '1rem']}>
-                          <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm">
-                            <Icon as={LuPhone} boxSize="1.0rem" />
-                            <Text fontSize="sm" color="#404353" noOfLines={1}>
-                              {clinic.phone}
-                            </Text>
-                          </Box>
-                          <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm" maxWidth="80%">
-                            <Icon as={LuMapPin} boxSize="1.0rem" />
-                            <Text fontSize="sm" color="#404353" noOfLines={1}>
-                              {clinic.addr}
-                            </Text>
-                          </Box>
-                        </Flex>
-                      </Heading>
-                    </Stack>
-                    <Link display="flex" alignItems="center" href={clinic.url}>
-                      <Button variant="hotpink" paddingInline="12px">
-                        View site
-                        <Icon as={LuArrowUpRight} marginLeft="0.3rem" boxSize="1.0rem" />
-                      </Button>
-                    </Link>
-                  </Flex>
-                ))
-              ) : (
-                <Box width="100%" borderWidth="1px" borderRadius="md" p="4">
-                  <Text size="sm" opacity="0.6" textAlign="center">
-                    No clinics within your selected radius.
-                  </Text>
-                </Box>
-              )}
-            </Flex>
-          </Stack>
-        )}
-      </Box>
+      {showFilteredClinics && (
+        <Stack
+          overflowY="scroll"
+          boxShadow="0 -4px 12px rgba(0, 0, 10, 0.2)"
+          width="100%"
+          zIndex="3"
+          bg="white"
+          padding="24px"
+          borderRadius="24px"
+          maxHeight="50vh"
+        >
+          <Select border="1px solid rgba(0, 0, 0, 0.20)" value={selectedRadius} onChange={handleRadiusChange} maxWidth="150px" mb="4">
+            {[1, 3, 5, 10, 15, 20, 25].map(radius => (
+              <option key={radius} value={radius}>
+                {`${radius} km`}
+              </option>
+            ))}
+          </Select>
+          <Heading fontSize="lg">Nearby clinics</Heading>
+          <Flex direction="column" gap={['0', '0', '1rem']} align="left" width="100%">
+            {filteredClinics.length > 0 ? (
+              filteredClinics.map((clinic, index) => (
+                <Flex key={index} justifyContent="space-between" width="100%" paddingBlock="0.2rem" borderWidth="1px" borderRadius="md">
+                  <Stack maxWidth="60%">
+                    <Heading size="1rem">
+                      <Link href={clinic.url} noOfLines={1} textDecoration="none" color="black" _hover={{ color: 'blue.700' }}>
+                        {clinic.name}
+                      </Link>
+                      <Flex direction={['column', 'column', 'row']} opacity="0.6" gap={['0', '0', '1rem']}>
+                        <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm">
+                          <Icon as={LuPhone} boxSize="1.0rem" />
+                          <Text fontSize="sm" color="#404353" noOfLines={1}>
+                            {clinic.phone}
+                          </Text>
+                        </Box>
+                        <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm" maxWidth="80%">
+                          <Icon as={LuMapPin} boxSize="1.0rem" />
+                          <Text fontSize="sm" color="#404353" noOfLines={1}>
+                            {clinic.addr}
+                          </Text>
+                        </Box>
+                      </Flex>
+                    </Heading>
+                  </Stack>
+                  <Link display="flex" alignItems="center" href={clinic.url}>
+                    <Button variant="hotpink" paddingInline="12px">
+                      View site
+                      <Icon as={LuArrowUpRight} marginLeft="0.3rem" boxSize="1.0rem" />
+                    </Button>
+                  </Link>
+                </Flex>
+              ))
+            ) : (
+              <Box width="100%" borderWidth="1px" borderRadius="md" p="4">
+                <Text size="sm" opacity="0.6" textAlign="center">
+                  No clinics within your selected radius.
+                </Text>
+              </Box>
+            )}
+          </Flex>
+        </Stack>
+      )}
     </Flex>
   ) : (
     <></>
   );
 };
-
 
 export default React.memo(Map);
 function setMarkers(arg0: (prevMarkers: any) => any[]) {
