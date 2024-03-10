@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 import ChatMenu from './components/ChatMenu';
-import Chat from './components/ChatBackend';
 import Location from './components/Location';
 import Learn from './components/Learn';
 import Prompts from './components/Prompts';
@@ -9,9 +8,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Flex, Switch } from '@chakra-ui/react';
 import Chat from './components/Chat';
 import Landing from './components/Landing';
-import Location from './components/Location';
-import Learn from './components/Learn';
-import Navbar from './components/NavBar';
+import Navbar from './components/Navbar';
 
 
 
@@ -37,7 +34,7 @@ function App() {
       }),
     }; 
 
-    // console.log(userInputRequest);
+    console.log(userInputRequest);
 
     try {
       const response = await fetch('http://localhost:8080/bigsister', userInputRequest)

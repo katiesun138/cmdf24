@@ -1,17 +1,17 @@
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 // import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
-// interface MapProps {
-//   long: number;
-//   lat: number;
-// }
+interface MapProps {
+  long: number;
+  lat: number;
+}
 
 // const containerStyle = {
 //   width: '1000px',
 //   height: '1000px',
 // };
 
-// const Map: React.FC<MapProps> = ({ long, lat }) => {
+const Map: React.FC<MapProps> = ({ long, lat }) => {
 //   const { isLoaded } = useJsApiLoader({
 //     id: 'google-map-script',
 //     googleMapsApiKey: 'YOUR_API_KEY',
@@ -56,7 +56,14 @@
 //   ) : (
 //     <></>
 //   );
-// };
+    return (
+        <>
+        </>
+    );
+};
+
+// dummy export, delete this when working
+export default Map;
 
 // export default React.memo(Map);
 // function setMarkers(arg0: (prevMarkers: any) => any[]) {
