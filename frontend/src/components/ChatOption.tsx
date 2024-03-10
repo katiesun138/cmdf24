@@ -1,13 +1,21 @@
-import { Flex, Text, Stack, Image } from '@chakra-ui/react';
+import { Flex, Text, Stack, Button } from '@chakra-ui/react';
 import React from 'react';
 
 interface ChatOptionProps {
-  desc: string;
+  desc?: string;
   title: string;
-  image: string;
+  onClick: (message: string) => Object;
+  key?: number;
 }
 
-function ChatOption({ desc, title, image }: ChatOptionProps) {
+
+function ChatOption({ desc, title, onClick, key }: ChatOptionProps) {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    
+    onClick(title);
+  }; 
+
   return (
     <Flex
       padding="1rem"
@@ -18,16 +26,15 @@ function ChatOption({ desc, title, image }: ChatOptionProps) {
       height="62px"
       border="1px solid rgba(0, 0, 0, 0.20)"
     >
-      <Flex justifyContent="center" alignItems="center" borderRadius="4px" width="36px" height="36px" border="1px solid rgba(0, 0, 0, 0.20)">
-        <Image src={image} alt="Description of the image" style={{ maxWidth: '100%', maxHeight: '100%' }} />
-      </Flex>
       <Stack gap="0">
-        <Text fontWeight="800" fontSize="2xs">
-          {title}
-        </Text>
-        <Text color="black" opacity="0.6" fontSize="2xs">
-          {desc}
-        </Text>
+        <Button onClick={handleClick} key={key}>
+          <Text fontWeight="800" fontSize="2xs">
+            {title}
+          </Text>
+          <Text color="black" opacity="0.6" fontSize="2xs">
+            {desc}
+          </Text>
+        </Button>
       </Stack>
     </Flex>
   );

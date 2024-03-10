@@ -46,10 +46,10 @@ const Chat: React.FC<ChatProps> = ({ onSendMessage }) =>  {
           gap="6px" // Adjust the gap between grid items as needed
           width="100%"
         >
-          <ChatOption image="/egg-svgrepo-com 1 (2).svg" desc="Learn your rights" title="Fertility Rights" />
+          {/* <ChatOption image="/egg-svgrepo-com 1 (2).svg" desc="Learn your rights" title="Fertility Rights" />
           <ChatOption image="/eggIcon.svg" desc="Learn your rights" title="Fertility Rights" />
           <ChatOption image="/femalesIcon.svg" desc="Learn your rights" title="Fertility Rights" />
-          <ChatOption image="/medicalIcon.svg" desc="Learn your rights" title="Fertility Rights" />
+          <ChatOption image="/medicalIcon.svg" desc="Learn your rights" title="Fertility Rights" /> */}
         </Grid>
         <InputGroup bg="#F8F8F8" borderRadius="100px" borderWidth="1px" borderColor="gray.300">
           <InputLeftElement pointerEvents="none">
