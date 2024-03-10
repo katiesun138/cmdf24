@@ -24,13 +24,13 @@ function App() {
       }),
     }; 
 
-    // console.log(userInputRequest);
+    console.log(userInputRequest);
 
     try {
       const response = await fetch('http://localhost:8080/bigsister', userInputRequest)
       const data = await response.json()
       console.log(data)
-      return data;
+      return Promise.resolve(data);
       
     } catch(err) {
       console.log(err);
