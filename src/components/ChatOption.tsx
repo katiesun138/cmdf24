@@ -11,19 +11,21 @@ function ChatOption({ desc, title, image }: ChatOptionProps) {
   return (
     <Flex
       padding="1rem"
-      justifyContent="space-between"
+      justifyContent="center"
+      gap="0.5rem"
       alignItems="center"
       borderRadius="24px"
-      width="200px"
-      height="72px"
+      height="62px"
       border="1px solid rgba(0, 0, 0, 0.20)"
     >
-      <Flex justifyContent="center" alignItems="center" borderRadius="4px" width="42px" height="42px" border="1px solid rgba(0, 0, 0, 0.20)">
+      <Flex justifyContent="center" alignItems="center" borderRadius="4px" width="36px" height="36px" border="1px solid rgba(0, 0, 0, 0.20)">
         <Image src={image} alt="Description of the image" style={{ maxWidth: '100%', maxHeight: '100%' }} />
       </Flex>
       <Stack gap="0">
-        <Text fontWeight="800">{title}</Text>
-        <Text color="black" opacity="0.6">
+        <Text fontWeight="800" fontSize="2xs">
+          {title}
+        </Text>
+        <Text color="black" opacity="0.6" fontSize="2xs">
           {desc}
         </Text>
       </Stack>
