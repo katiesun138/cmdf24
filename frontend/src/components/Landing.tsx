@@ -1,7 +1,7 @@
-import React from 'react';
-import { LuMapPin, LuPhone, LuArrowRight } from 'react-icons/lu';
-import { Flex, Text, Image, Icon, Input, Button, Stack, Heading } from '@chakra-ui/react';
+import { LuMapPin, LuPhone, LuArrowRight, LuPenSquare, LuSettings2, LuSend } from 'react-icons/lu';
+import { Flex, Text, Image, Icon, Input, Button, Stack, Heading, InputGroup, InputRightElement } from '@chakra-ui/react';
 import TopicBox from './TopicBox';
+import Header from './Header';
 
 interface ClinicProps {
   desc: string;
@@ -52,16 +52,18 @@ function Landing({ mgBot }: { mgBot: string }) {
       marginBottom={mgBot}
       paddingInline={['1rem', '2rem', '8rem']}
       gap="1.6rem"
+      maxWidth="1200px"
       height="100%"
       justifyContent="center"
       padding="0.5rem"
     >
+      <Header />
       <Stack
         gap="0"
         alignItems="space-between"
         padding="1.2rem"
         width="100%"
-        bgGradient="linear(to-r, lpink, lorange)"
+        bgGradient="linear(to-r, hotpink, dorange)"
         borderRadius="24px"
         justifyContent="space-between"
         height="fit-content"
@@ -71,7 +73,7 @@ function Landing({ mgBot }: { mgBot: string }) {
           <Heading fontSize="1.6rem" color="white" textShadow="0 1px 2px rgba(0, 0, 10, 0.2)">
             Big Sister is here to help!
           </Heading>
-          <Button variant="hotpink" paddingInline="36px" gap="0.5rem">
+          <Button variant="white" color="#BB0038" paddingInline="36px" gap="0.5rem">
             Start
             <Icon as={LuArrowRight} boxSize="1.0rem" />
           </Button>
