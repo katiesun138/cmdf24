@@ -112,7 +112,9 @@ const Chat: React.FC<ChatProps> = ({ onSendMessage }) => {
         </InputLeftElement>
         <Input
           border="none"
+          borderRadius="100px"
           color="gray.600"
+          width="100%"
           bg="none"
           placeholder="Ask anything..."
           _placeholder={{ color: 'gray.400', fontSize: 'sm' }}
