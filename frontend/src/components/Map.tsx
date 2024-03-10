@@ -71,7 +71,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, Circle } from '@react-google-maps/api';
-import { Box, Button, ButtonGroup, Card, CardBody, Flex, Heading, Icon, Link, filter } from '@chakra-ui/react';
+import { Box, Text, ButtonGroup, Card, CardBody, Flex, Heading, Icon, Link, filter, Stack } from '@chakra-ui/react';
 import Header from './Header';
 import { click } from '@testing-library/user-event/dist/click';
 import { AdvancedMarker } from '@vis.gl/react-google-maps';
@@ -140,12 +140,8 @@ const Map = () => {
   };
 
   const clickMe = () => {
-    if (!locationClicked) {
-      // alert('Please select a location');
-    } else {
-      setShowFilteredClinics(true);
-      console.log('I HAVE SELECTED A LOCATION!!!!!');
-    }
+    setShowFilteredClinics(true);
+    console.log('I HAVE SELECTED A LOCATION!!!!!');
   };
 
   const filteredClinics = clinicdata.filter(clinic => {
@@ -211,47 +207,54 @@ const Map = () => {
           Search Surroundings
         </Button>
       </Box> */}
-
-      {showFilteredClinics && (
-        <Box
-          boxShadow="0 -4px 12px rgba(0, 0, 10, 0.2)"
-          width="100%"
-          zIndex="3"
-          bg="white"
-          padding="24px"
-          borderRadius="24px"
-          maxHeight="50vh"
-          overflowY="auto"
-        >
-          <Heading fontSize="lg">Nearby clinics</Heading>
-          <Flex direction="column" align="left" width="100%" paddingBottom={50}>
-            {filteredClinics.length > 0 ? (
-              filteredClinics.map((clinic, index) => (
-                <Box key={index} width="100%" borderWidth="1px" borderRadius="md" marginBottom="4">
-                  <Heading size="1rem">
-                    <Link href={clinic.url} textDecoration="none" color="blue.500" _hover={{ color: 'blue.700' }}>
-                      {clinic.name}
-                      <Icon as={LuArrowUpRight} marginLeft="0.3rem" boxSize="1.0rem" />
-                    </Link>
-                    <Box display="flex" alignItems="center" noOfLines={1} gap="0.5rem" color="#404353" opacity="0.6" fontSize="sm">
-                      <Icon as={LuPhone} boxSize="1.0rem" />
-                      {clinic.phone}
-                      <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm" maxWidth="80%">
-                        <Icon as={LuMapPin} boxSize="1.0rem" />
-                        {clinic.addr}
-                      </Box>
-                    </Box>
-                  </Heading>
+      <Box
+        boxShadow="0 -4px 12px rgba(0, 0, 10, 0.2)"
+        width="100%"
+        zIndex="3"
+        bg="white"
+        padding="24px"
+        borderRadius="24px"
+        maxHeight="50vh"
+        overflowY="auto"
+      >
+        {showFilteredClinics && (
+          <Stack>
+            <Heading fontSize="lg">Nearby clinics</Heading>
+            <Flex direction="column" align="left" width="100%" paddingBottom={50}>
+              {filteredClinics.length > 0 ? (
+                filteredClinics.map((clinic, index) => (
+                  <Box key={index} width="100%" borderWidth="1px" borderRadius="md" marginBottom="4">
+                    <Heading size="1rem">
+                      <Link href={clinic.url} noOfLines={1} textDecoration="none" color="blue.500" _hover={{ color: 'blue.700' }}>
+                        {clinic.name}
+                        <Icon as={LuArrowUpRight} marginLeft="0.3rem" boxSize="1.0rem" />
+                      </Link>
+                      <Flex direction={['column', 'column', 'row']} opacity="0.6" gap={['0', '0', '1rem']}>
+                        <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm">
+                          <Icon as={LuPhone} boxSize="1.0rem" />
+                          {clinic.phone}
+                        </Box>
+                        <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm" maxWidth="80%">
+                          <Icon as={LuMapPin} boxSize="1.0rem" />
+                          <Text fontSize="sm" color="#404353" noOfLines={1}>
+                            {clinic.addr}
+                          </Text>
+                        </Box>
+                      </Flex>
+                    </Heading>
+                  </Box>
+                ))
+              ) : (
+                <Box width="100%" borderWidth="1px" borderRadius="md" p="4">
+                  <Text size="sm" opacity="0.6" textAlign="center">
+                    No clinics within your selected radius.
+                  </Text>
                 </Box>
-              ))
-            ) : (
-              <Box width="100%" boxShadow="md" borderWidth="1px" borderRadius="md" p="4">
-                <Heading size="md">No clinics within your selected radius</Heading>
-              </Box>
-            )}
-          </Flex>
-        </Box>
-      )}
+              )}
+            </Flex>
+          </Stack>
+        )}
+      </Box>
     </Flex>
   ) : (
     <></>
