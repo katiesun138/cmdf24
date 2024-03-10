@@ -88,22 +88,26 @@ function Landing({ mgBot }: { mgBot: string }) {
         </Flex>
         <Flex gap="0.5rem" overflow="hidden">
           <TopicBox
+            width="300px"
             desc="Post-menstrual syndrome, also known as premenstrual dysphoric disorder (PMDD), refers to a condition where individuals experience severe
         emotional and physical symptoms following their menstrual period. It can include mood swings, irritability, depression, anxiety, fatigue, and
         physical discomfort."
             title="How to Deal with Post Menstrual Syndrome"
           />
           <TopicBox
+            width="300px"
             desc="In the complex landscape of intimate relationships, the dynamics between partners can sometimes take a harmful turn, leading to emotional, psychological, or physical abuse. Recognizing the signs of an abusive relationship is crucial for individuals to protect themselves and seek the support they need. Abuse can manifest in various forms, often insidious and difficult to detect at first glance. Understanding these signs can be the first step towards breaking free from the cycle of abuse and seeking healing."
             title="Recognizing the Signs of an Abusive Relationship: A Vital Step Towards Safety and Healing"
           />
           <TopicBox
+            width="300px"
             desc="Post-menstrual syndrome, also known as premenstrual dysphoric disorder (PMDD), refers to a condition where individuals experience severe
         emotional and physical symptoms following their menstrual period. It can include mood swings, irritability, depression, anxiety, fatigue, and
         physical discomfort."
             title="How to Deal with Post Menstrual Syndrome"
           />
           <TopicBox
+            width="300px"
             desc="In the complex landscape of intimate relationships, the dynamics between partners can sometimes take a harmful turn, leading to emotional, psychological, or physical abuse. Recognizing the signs of an abusive relationship is crucial for individuals to protect themselves and seek the support they need. Abuse can manifest in various forms, often insidious and difficult to detect at first glance. Understanding these signs can be the first step towards breaking free from the cycle of abuse and seeking healing."
             title="Recognizing the Signs of an Abusive Relationship: A Vital Step Towards Safety and Healing"
           />

@@ -1,8 +1,9 @@
-import { Flex, Button, Text, Stack, Image } from '@chakra-ui/react';
+import { Flex, Text, Button } from '@chakra-ui/react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { LuHome, LuMap, LuMessageCircle, LuUsers2, LuBookmark } from 'react-icons/lu';
 
-function Navbar() {
+const Navbar = () => {
   return (
     <Flex
       position="fixed"
@@ -27,38 +28,52 @@ function Navbar() {
         justifyContent="space-between"
         width="100%"
       >
-        <Stack width="2rem" alignItems="center" justifyContent="center" gap="0">
-          <LuHome />
-          <Text fontSize="xs" color="black" textAlign="center">
-            Home
-          </Text>
-        </Stack>
-        <Stack width="2rem" alignItems="center" justifyContent="center" gap="0">
-          <LuMap />
-          <Text fontSize="xs" color="black" textAlign="center">
-            Map
-          </Text>
-        </Stack>
-        <Stack width="2rem" alignItems="center" justifyContent="center" gap="0">
-          <Flex padding="0.8rem" bg="hotpink" borderRadius="100px">
-            <LuMessageCircle color="white" />
-          </Flex>
-        </Stack>
-        <Stack width="2rem" alignItems="center" justifyContent="center" gap="0">
-          <LuUsers2 />
-          <Text fontSize="xs" color="black" textAlign="center">
-            Community
-          </Text>
-        </Stack>
-        <Stack width="2rem" alignItems="center" justifyContent="center" gap="0">
-          <LuBookmark />
-          <Text fontSize="xs" color="black" textAlign="center">
-            Saved
-          </Text>
-        </Stack>
+        <Link to="/">
+          <Button display="flex" width="2rem" alignItems="center" justifyContent="center" gap="0">
+            <LuHome />
+            <Text fontSize="xs" color="black" textAlign="center">
+              Home
+            </Text>
+          </Button>
+        </Link>
+
+        <Link to="/location">
+          <Button display="flex" width="2rem" alignItems="center" justifyContent="center" gap="0">
+            <LuMap />
+            <Text fontSize="xs" color="black" textAlign="center">
+              Map
+            </Text>
+          </Button>
+        </Link>
+
+        <Link to="/chat">
+          <Button display="flex" width="2rem" alignItems="center" justifyContent="center" gap="0">
+            <Flex padding="0.8rem" bg="hotpink" borderRadius="100px">
+              <LuMessageCircle color="white" />
+            </Flex>
+          </Button>
+        </Link>
+
+        <Link to="/chat">
+          <Button display="flex" width="2rem" alignItems="center" justifyContent="center" gap="0">
+            <LuUsers2 />
+            <Text fontSize="xs" color="black" textAlign="center">
+              Community
+            </Text>
+          </Button>
+        </Link>
+
+        <Link to="/saved">
+          <Button display="flex" width="2rem" alignItems="center" justifyContent="center" gap="0">
+            <LuBookmark />
+            <Text fontSize="xs" color="black" textAlign="center">
+              Saved
+            </Text>
+          </Button>
+        </Link>
       </Flex>
     </Flex>
   );
-}
+};
 
 export default Navbar;
