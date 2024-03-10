@@ -40,7 +40,6 @@ function Info({ mgBot }: { mgBot: string }) {
       </Stack>
       <Stack gap="1rem">
         <Flex width="100%" justifyContent="space-between">
-          <br></br>
           <Heading fontSize="md" fontWeight="700" text-align="center">
             Welcome to BigSister! We are here to help women who need any support or guidance regarding abortion. 
           </Heading>
