@@ -169,7 +169,7 @@ const Map = () => {
       overflow="auto"
     >
       <Header />
-      <Flex width="100%" height={['300px', '300px', '500px']}>
+      <Flex width="100%" height={['300px', '300px', '400px']}>
         <GoogleMap
           mapContainerStyle={{
             width: '100%',
@@ -214,16 +214,7 @@ const Map = () => {
           Search Surroundings
         </Button>
       </Box> */}
-      <Box
-        boxShadow="0 -4px 12px rgba(0, 0, 10, 0.2)"
-        width="100%"
-        zIndex="3"
-        bg="white"
-        padding="24px"
-        borderRadius="24px"
-        maxHeight="50vh"
-        overflowY="auto"
-      >
+      <Box boxShadow="0 -4px 12px rgba(0, 0, 10, 0.2)" width="100%" zIndex="3" bg="white" padding="24px" borderRadius="24px" maxHeight="50vh">
         {showFilteredClinics && (
           <Stack>
             <Select value={selectedRadius} onChange={handleRadiusChange} maxWidth="150px" mb="4">
@@ -234,29 +225,38 @@ const Map = () => {
               ))}
             </Select>
             <Heading fontSize="lg">Nearby clinics</Heading>
-            <Flex direction="column" align="left" width="100%">
+            <Flex direction="column" gap={['0', '0', '1rem']} align="left" width="100%">
               {filteredClinics.length > 0 ? (
                 filteredClinics.map((clinic, index) => (
-                  <Box key={index} width="100%" paddingBlock="0.2rem" borderWidth="1px" borderRadius="md">
-                    <Heading size="1rem">
-                      <Link href={clinic.url} noOfLines={1} textDecoration="none" color="blue.500" _hover={{ color: 'blue.700' }}>
-                        {clinic.name}
+                  <Flex key={index} justifyContent="space-between" width="100%" paddingBlock="0.2rem" borderWidth="1px" borderRadius="md">
+                    <Stack maxWidth="60%">
+                      <Heading size="1rem">
+                        <Link href={clinic.url} noOfLines={1} textDecoration="none" color="black" _hover={{ color: 'blue.700' }}>
+                          {clinic.name}
+                        </Link>
+                        <Flex direction={['column', 'column', 'row']} opacity="0.6" gap={['0', '0', '1rem']}>
+                          <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm">
+                            <Icon as={LuPhone} boxSize="1.0rem" />
+                            <Text fontSize="sm" color="#404353" noOfLines={1}>
+                              {clinic.phone}
+                            </Text>
+                          </Box>
+                          <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm" maxWidth="80%">
+                            <Icon as={LuMapPin} boxSize="1.0rem" />
+                            <Text fontSize="sm" color="#404353" noOfLines={1}>
+                              {clinic.addr}
+                            </Text>
+                          </Box>
+                        </Flex>
+                      </Heading>
+                    </Stack>
+                    <Link display="flex" alignItems="center" href={clinic.url}>
+                      <Button variant="hotpink" paddingInline="12px">
+                        View site
                         <Icon as={LuArrowUpRight} marginLeft="0.3rem" boxSize="1.0rem" />
-                      </Link>
-                      <Flex direction={['column', 'column', 'row']} opacity="0.6" gap={['0', '0', '1rem']}>
-                        <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm">
-                          <Icon as={LuPhone} boxSize="1.0rem" />
-                          {clinic.phone}
-                        </Box>
-                        <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm" maxWidth="80%">
-                          <Icon as={LuMapPin} boxSize="1.0rem" />
-                          <Text fontSize="sm" color="#404353" noOfLines={1}>
-                            {clinic.addr}
-                          </Text>
-                        </Box>
-                      </Flex>
-                    </Heading>
-                  </Box>
+                      </Button>
+                    </Link>
+                  </Flex>
                 ))
               ) : (
                 <Box width="100%" borderWidth="1px" borderRadius="md" p="4">
