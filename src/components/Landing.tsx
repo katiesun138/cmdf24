@@ -1,5 +1,5 @@
 import React from 'react';
-import { LuMapPin, LuPhone, LuArrowRight } from 'react-icons/lu';
+import { LuMapPin, LuPhone, LuArrowRight, LuPenSquare, LuSettings2 } from 'react-icons/lu';
 import { Flex, Text, Image, Icon, Input, Button, Stack, Heading } from '@chakra-ui/react';
 import TopicBox from './TopicBox';
 
@@ -56,6 +56,15 @@ function Landing({ mgBot }: { mgBot: string }) {
       justifyContent="center"
       padding="0.5rem"
     >
+      <Flex marginTop="0.5rem" justifyContent="space-between" alignItems="center" width="100%">
+        <Button paddingInline="0" color="black">
+          <Icon as={LuSettings2} boxSize="1.6rem" />
+        </Button>
+        <Heading fontSize="xl">BigSister</Heading>
+        <Button paddingInline="0" color="black">
+          <Icon as={LuPenSquare} boxSize="1.6rem" />
+        </Button>
+      </Flex>
       <Stack
         gap="0"
         alignItems="space-between"

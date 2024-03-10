@@ -2,10 +2,16 @@ import TopicBox from './TopicBox';
 import React, { useState, useEffect } from 'react';
 import { LuSettings2, LuPenSquare } from 'react-icons/lu';
 import TinyComponent from './TinyMCE';
-import { Stack, Image, Flex, Button, Heading, Icon } from '@chakra-ui/react';
+import { Stack, Image, Flex, Button, Heading, Icon, Input } from '@chakra-ui/react';
 
 function Forum() {
   const [contentVisible, setContentVisible] = useState(true);
+  const [topics, setTopics] = useState<JSX.Element[]>([]);
+
+  const addTopic = (desc: string, title: string): void => {
+    const newTopic = <TopicBox key={topics.length + 1} width="100%" desc={desc} title={title} />;
+    setTopics(prevTopics => [...prevTopics, newTopic]); // Add the new topic to the topics state array
+  };
 
   useEffect(() => {
     // Logic to toggle visibility of content based on contentVisible state
@@ -16,35 +22,30 @@ function Forum() {
   }, [contentVisible]);
   return (
     <Stack width="100%" paddingInline={['1rem', '2rem', '8rem']} height="100%" justifyContent="center" padding="0.5rem">
-      <Flex justifyContent="space-between" alignItems="center" width="100%">
-        <Heading fontSize="lg">BigSister</Heading>
-        <Flex gap="0.5rem">
-          <Button paddingInline="0" variant="hotpink">
-            <Icon as={LuSettings2} boxSize="1.2rem" />
-          </Button>
-          <Button paddingInline="0" variant="hotpink" onClick={() => setContentVisible(!contentVisible)}>
-            <Icon as={LuPenSquare} boxSize="1.2rem" />
-          </Button>
-        </Flex>
+      <Flex marginTop="0.5rem" justifyContent="space-between" alignItems="center" width="100%">
+        <Button paddingInline="0" color="black">
+          <Icon as={LuSettings2} boxSize="1.6rem" />
+        </Button>
+        <Heading fontSize="xl">BigSister</Heading>
+        <Button paddingInline="0" color="black" onClick={() => setContentVisible(!contentVisible)}>
+          <Icon as={LuPenSquare} boxSize="1.6rem" />
+        </Button>
       </Flex>
-      <Stack
-        gap="0"
-        alignItems="center"
-        padding="1.2rem"
-        width="100%"
-        bgGradient="linear(to-r, lpink, lorange)"
-        borderRadius="24px"
-        justifyContent="center"
-        height={contentVisible ? 'fit-content' : 0}
-        id="content"
-      >
-        <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '100px', maxHeight: '100px' }} />
-        <Heading fontSize="1.6rem" color="white" textShadow="0 1px 2px rgba(0, 0, 10, 0.2)">
-          Big Sister is here to help!
-        </Heading>
-      </Stack>
+      <Flex gap="0.5rem" height={contentVisible ? 'fit-content' : 0} id="content">
+        <Button variant="hotpink">Popular</Button>
+        <Button color="black" bg="white" borderRadius="100px" opacity="0.87">
+          Recommended
+        </Button>
+        <Button color="black" bg="white" borderRadius="100px" opacity="0.87">
+          Health
+        </Button>
+        <Button color="black" bg="white" borderRadius="100px" opacity="0.87">
+          Relationships
+        </Button>
+      </Flex>
       {contentVisible && (
-        <>
+        <Stack id="topics">
+          {topics}
           <TopicBox
             width="100%"
             desc="Post-menstrual syndrome, also known as premenstrual dysphoric disorder (PMDD), refers to a condition where individuals experience severe
@@ -72,9 +73,9 @@ function Forum() {
             desc="In the complex landscape of intimate relationships, the dynamics between partners can sometimes take a harmful turn, leading to emotional, psychological, or physical abuse. Recognizing the signs of an abusive relationship is crucial for individuals to protect themselves and seek the support they need. Abuse can manifest in various forms, often insidious and difficult to detect at first glance. Understanding these signs can be the first step towards breaking free from the cycle of abuse and seeking healing."
             title="Recognizing the Signs of an Abusive Relationship: A Vital Step Towards Safety and Healing"
           />
-        </>
+        </Stack>
       )}
-      {!contentVisible && <TinyComponent />}
+      {!contentVisible && <TinyComponent onClick={addTopic} />}
     </Stack>
   );
 }
