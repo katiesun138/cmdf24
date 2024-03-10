@@ -225,7 +225,7 @@ const Map = () => {
             <Flex direction="column" align="left" width="100%">
               {filteredClinics.length > 0 ? (
                 filteredClinics.map((clinic, index) => (
-                  <Box key={index} width="100%" borderWidth="1px" borderRadius="md">
+                  <Box key={index} width="100%" paddingBlock="0.2rem" borderWidth="1px" borderRadius="md">
                     <Heading size="1rem">
                       <Link href={clinic.url} noOfLines={1} textDecoration="none" color="blue.500" _hover={{ color: 'blue.700' }}>
                         {clinic.name}
