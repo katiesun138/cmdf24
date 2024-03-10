@@ -11,6 +11,7 @@ router.post('/', (req, res) => {
     console.log(req);
     const chatStream = await cohere.chatStream({
       stream: true,
+      max_tokens_limit: 500,
       message: req.body.userInput,
       // perform web search before answering the question. You can also use your own custom connector.
       preambleOverride: 'You are a trusted big sister to help support women during their abortion process.',
@@ -43,6 +44,7 @@ router.post('/prompts', (req, res) => {
     const chatStream = await cohere.chatStream({
       stream: true,
       message: promptsAsk,
+      max_tokens_limit: 500,
       // perform web search before answering the question. You can also use your own custom connector.
       preambleOverride: 'You are a trusted big sister to help support women during their abortion process.',
       connectors: [{ id: 'web-search' }],
