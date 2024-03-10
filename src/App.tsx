@@ -14,7 +14,7 @@ function App() {
       justifyContent="center" // Center the child elements horizontally
       alignItems="center" // Center the child elements vertically
     >
-      <Landing />
+      <Landing mgBot="6rem" />
       <Navbar />
     </Flex>
 

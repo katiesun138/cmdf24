@@ -66,7 +66,7 @@ const components = {
       fontFamily: `Nunito`,
       fontWeight: `700`,
       color: 'black',
-      letterSpacing: `-0.03em`,
+      letterSpacing: `-0.01em`,
     },
   },
 };
@@ -82,7 +82,7 @@ export const chakraTheme = extendTheme({
     global: {
       body: {
         fontFamily: 'nunito',
-        bg: 'white',
+        bg: '#FFFDFD',
         color: 'black',
       },
     },
