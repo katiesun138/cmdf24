@@ -12,6 +12,7 @@ const colors = {
   hotpink: `#E92498`,
   lpink: `#F6A8D4`,
   lorange: `#FDC7AB`,
+  dorange: `#FC8119`,
   peach: `#FEF6F7`,
 
   secondary: {
@@ -69,6 +70,11 @@ const components = {
       letterSpacing: `-0.01em`,
     },
   },
+  Select: {
+    option: {
+      bg: `white`,
+    },
+  },
 };
 
 export const chakraTheme = extendTheme({
@@ -82,7 +88,7 @@ export const chakraTheme = extendTheme({
     global: {
       body: {
         fontFamily: 'nunito',
-        bg: '#F8F1F1',
+        bg: '#FEF6F7',
         color: 'black',
       },
     },
