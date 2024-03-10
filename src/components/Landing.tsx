@@ -24,19 +24,19 @@ function NearbyClinicBox({ desc, title, image, number }: ClinicProps) {
       border="1px solid rgba(0, 0, 0, 0.20)"
     >
       <Flex justifyContent="center" alignItems="center" borderRadius="4px" width="100%">
-        <Image borderRadius="12px" src={image} alt="Description of the image" />
+        <Image borderRadius="12px" src={image} alt="Description of the image" width="232px" />
       </Flex>
       <Stack gap="0" width="100%" paddingInline="0.5rem">
         <Text fontWeight="800" fontSize="sm">
           {title}
         </Text>
-        <Flex gap="0.5rem">
+        <Flex gap="0.8rem">
           <Text display="flex" alignItems="center" gap="0.2rem" color="black" opacity="0.6" fontSize="sm">
-            <LuMapPin />
+            <LuMapPin color="hotpink" />
             {desc}
           </Text>
           <Text display="flex" alignItems="center" gap="0.2rem" color="black" opacity="0.6" fontSize="sm">
-            <LuPhone />
+            <LuPhone color="hotpink" />
             {number}
           </Text>
         </Flex>
@@ -60,7 +60,9 @@ function Landing() {
       >
         <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '100px', maxHeight: '100px' }} />
         <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
-          <Heading fontSize="1.6rem">Get the help you need today.</Heading>
+          <Heading fontSize="1.6rem" color="white">
+            Big Sister is here to help!
+          </Heading>
           <Button variant="hotpink" paddingInline="36px">
             Start
           </Button>
@@ -69,7 +71,7 @@ function Landing() {
       <Stack>
         <Flex width="100%" justifyContent="space-between">
           <Heading fontSize="md" fontWeight="700" opacity="0.6">
-            Recommended Topics
+            Recommended topics
           </Heading>
           <Text fontSize="sm" fontWeight="700" color="hotpink">
             View all
@@ -86,19 +88,33 @@ function Landing() {
             desc="In the complex landscape of intimate relationships, the dynamics between partners can sometimes take a harmful turn, leading to emotional, psychological, or physical abuse. Recognizing the signs of an abusive relationship is crucial for individuals to protect themselves and seek the support they need. Abuse can manifest in various forms, often insidious and difficult to detect at first glance. Understanding these signs can be the first step towards breaking free from the cycle of abuse and seeking healing."
             title="Recognizing the Signs of an Abusive Relationship: A Vital Step Towards Safety and Healing"
           />
+          <TopicBox
+            desc="Post-menstrual syndrome, also known as premenstrual dysphoric disorder (PMDD), refers to a condition where individuals experience severe
+        emotional and physical symptoms following their menstrual period. It can include mood swings, irritability, depression, anxiety, fatigue, and
+        physical discomfort."
+            title="How to Deal with Post Menstrual Syndrome"
+          />
+          <TopicBox
+            desc="In the complex landscape of intimate relationships, the dynamics between partners can sometimes take a harmful turn, leading to emotional, psychological, or physical abuse. Recognizing the signs of an abusive relationship is crucial for individuals to protect themselves and seek the support they need. Abuse can manifest in various forms, often insidious and difficult to detect at first glance. Understanding these signs can be the first step towards breaking free from the cycle of abuse and seeking healing."
+            title="Recognizing the Signs of an Abusive Relationship: A Vital Step Towards Safety and Healing"
+          />
         </Flex>
       </Stack>
       <Stack>
         <Flex width="100%" justifyContent="space-between">
           <Heading fontSize="md" fontWeight="700" opacity="0.6">
-            Nearby Clinics
+            Clinics near you
           </Heading>
           <Text fontSize="sm" fontWeight="700" color="hotpink">
             View all
           </Text>
         </Flex>
-        <NearbyClinicBox number="604 739 9087" title="Vancouver Sunnyside Clinic" desc="bboogga" image="/Rectangle 22 (1).png" />
-        <NearbyClinicBox title="Planned Parenthood" desc="bboogga" image="/Rectangle 22.png" />
+        <Flex gap="0.5rem">
+          <NearbyClinicBox number="604 739 9087" title="Vancouver Sunnyside Clinic" desc="1.6 km" image="/Rectangle 22 (1).png" />
+          <NearbyClinicBox number="778 329 1299" title="Planned Parenthood" desc="2.4 km" image="/Rectangle 22.png" />
+          <NearbyClinicBox number="604 739 9087" title="Vancouver Sunnyside Clinic" desc="1.6 km" image="/Rectangle 22 (1).png" />
+          <NearbyClinicBox number="778 329 1299" title="Planned Parenthood" desc="2.4 km" image="/Rectangle 22.png" />
+        </Flex>
       </Stack>
     </Stack>
   );

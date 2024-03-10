@@ -11,7 +11,7 @@ function Navbar() {
       paddingInline={['2rem', '4rem', '8rem']}
       justifySelf="center"
       justifyContent="space-between"
-      width="80%"
+      width={['100%', '80%']}
       maxWidth="800px"
       alignItems="center"
       borderRadius="100px"
