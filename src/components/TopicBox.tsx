@@ -9,7 +9,7 @@ interface TopicBoxProps {
 
 function TopicBox({ desc, title }: TopicBoxProps) {
   return (
-    <Stack gap="1rem" width="300px" padding="1rem" bg="peach" borderRadius="24px">
+    <Stack gap="1rem" width="300px" padding="1rem" bg="white" border="1px solid rgba(0, 0, 0, 0.20)" borderRadius="24px">
       <Stack direction="row" justifyContent="space-between">
         <Heading fontSize="md" noOfLines={2} maxWidth="85%">
           {title}

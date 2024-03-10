@@ -19,6 +19,7 @@ function NearbyClinicBox({ desc, title, image, number }: ClinicProps) {
       alignItems="center"
       borderRadius="24px"
       width="250px"
+      bg="white"
       height="250px"
       border="1px solid rgba(0, 0, 0, 0.20)"
     >
@@ -63,11 +64,11 @@ function Landing({ mgBot }: { mgBot: string }) {
         bgGradient="linear(to-r, lpink, lorange)"
         borderRadius="24px"
         justifyContent="space-between"
-        height="200px"
+        height="fit-content"
       >
         <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '100px', maxHeight: '100px' }} />
         <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
-          <Heading fontSize="1.6rem" color="white">
+          <Heading fontSize="1.6rem" color="white" textShadow="0 1px 2px rgba(0, 0, 10, 0.2)">
             Big Sister is here to help!
           </Heading>
           <Button variant="hotpink" paddingInline="36px">
@@ -77,7 +78,7 @@ function Landing({ mgBot }: { mgBot: string }) {
       </Stack>
       <Stack>
         <Flex width="100%" justifyContent="space-between">
-          <Heading fontSize="md" fontWeight="700" opacity="0.6">
+          <Heading fontSize="md" fontWeight="700">
             Recommended topics
           </Heading>
           <Text fontSize="sm" fontWeight="700" color="hotpink">
@@ -109,7 +110,7 @@ function Landing({ mgBot }: { mgBot: string }) {
       </Stack>
       <Stack>
         <Flex width="100%" justifyContent="space-between">
-          <Heading fontSize="md" fontWeight="700" opacity="0.6">
+          <Heading fontSize="md" fontWeight="700">
             Clinics near you
           </Heading>
           <Text fontSize="sm" fontWeight="700" color="hotpink">

@@ -82,7 +82,7 @@ export const chakraTheme = extendTheme({
     global: {
       body: {
         fontFamily: 'nunito',
-        bg: '#FFFDFD',
+        bg: '#F8F1F1',
         color: 'black',
       },
     },
