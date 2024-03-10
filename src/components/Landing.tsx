@@ -1,7 +1,6 @@
 import React from 'react';
 import { LuMapPin, LuPhone } from 'react-icons/lu';
-import { Flex, Text, Image, Input, Button, InputGroup, InputLeftElement, InputRightElement, Grid, Stack, Heading } from '@chakra-ui/react';
-import ChatOption from './ChatOption';
+import { Flex, Text, Image, Input, Button, Stack, Heading } from '@chakra-ui/react';
 import TopicBox from './TopicBox';
 
 interface ClinicProps {
@@ -23,8 +22,8 @@ function NearbyClinicBox({ desc, title, image, number }: ClinicProps) {
       height="250px"
       border="1px solid rgba(0, 0, 0, 0.20)"
     >
-      <Flex justifyContent="center" alignItems="center" borderRadius="4px" width="100%">
-        <Image borderRadius="12px" src={image} alt="Description of the image" width="232px" />
+      <Flex justifyContent="center" alignItems="center" borderRadius="4px" width="232px">
+        <Image borderRadius="12px" src={image} alt="Description of the image" />
       </Flex>
       <Stack gap="0" width="100%" paddingInline="0.5rem">
         <Text fontWeight="800" fontSize="sm">
@@ -45,9 +44,17 @@ function NearbyClinicBox({ desc, title, image, number }: ClinicProps) {
   );
 }
 
-function Landing() {
+function Landing({ mgBot }: { mgBot: string }) {
   return (
-    <Stack width="100%" paddingInline={['1rem', '2rem', '8rem']} gap="1.6rem" height="100%" justifyContent="center" padding="0.5rem">
+    <Stack
+      width="100%"
+      marginBottom={mgBot}
+      paddingInline={['1rem', '2rem', '8rem']}
+      gap="1.6rem"
+      height="100%"
+      justifyContent="center"
+      padding="0.5rem"
+    >
       <Stack
         gap="0"
         alignItems="space-between"
@@ -77,7 +84,7 @@ function Landing() {
             View all
           </Text>
         </Flex>
-        <Flex gap="0.5rem">
+        <Flex gap="0.5rem" overflow="hidden">
           <TopicBox
             desc="Post-menstrual syndrome, also known as premenstrual dysphoric disorder (PMDD), refers to a condition where individuals experience severe
         emotional and physical symptoms following their menstrual period. It can include mood swings, irritability, depression, anxiety, fatigue, and
@@ -109,7 +116,7 @@ function Landing() {
             View all
           </Text>
         </Flex>
-        <Flex gap="0.5rem">
+        <Flex gap="0.5rem" overflow="hidden">
           <NearbyClinicBox number="604 739 9087" title="Vancouver Sunnyside Clinic" desc="1.6 km" image="/Rectangle 22 (1).png" />
           <NearbyClinicBox number="778 329 1299" title="Planned Parenthood" desc="2.4 km" image="/Rectangle 22.png" />
           <NearbyClinicBox number="604 739 9087" title="Vancouver Sunnyside Clinic" desc="1.6 km" image="/Rectangle 22 (1).png" />
