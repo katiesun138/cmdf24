@@ -5,9 +5,14 @@ import Chat from './components/ChatBackend';
 import Location from './components/Location';
 import Learn from './components/Learn';
 import Prompts from './components/Prompts';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Flex, Switch } from '@chakra-ui/react';
+import Chat from './components/Chat';
+import Landing from './components/Landing';
+import Location from './components/Location';
+import Learn from './components/Learn';
+import Navbar from './components/NavBar';
 
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
-import { Switch } from '@chakra-ui/react';
 
 
 function App() {
@@ -45,15 +50,31 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-        <Routes>
-          <Route path="/location" element={<Location/>} />
-          <Route path="/learn" element={<Learn/>} />
-          <Route path="/" element={<ChatMenu onClick={handleOptionClick}/>} />
-          {selectedOption === 'livechat' && <Route path="/livechat" element={<Chat onSendMessage={handleSendMessage} />} />}
-          {selectedOption === 'prompts' && <Route path="/prompts" element={<Prompts onClick={handleSendMessage} />} />}
-        </Routes>
-    </BrowserRouter>
+    <Flex // Ensure the container spans the entire viewport height
+      justifyContent="center" // Center the child elements horizontally
+      alignItems="center" // Center the child elements vertically
+    >
+        <BrowserRouter>
+          <Routes>
+            <Route path="/location" element={<Location/>} />
+            <Route path="/learn" element={<Learn/>} />
+            <Route path="/" element={<ChatMenu onClick={handleOptionClick}/>} />
+            {selectedOption === 'livechat' && <Route path="/livechat" element={<Chat onSendMessage={handleSendMessage} />} />}
+            {selectedOption === 'prompts' && <Route path="/prompts" element={<Prompts onClick={handleSendMessage} />} />}
+          </Routes>
+      </BrowserRouter>
+      <Landing mgBot="6rem" />
+      <Navbar />
+    </Flex>
+
+    // <BrowserRouter>
+    //   <Routes>
+    //<Route path="/landing" element={<Landing />} />
+    //     <Route path="/location" element={<Location />} />
+    //     <Route path="/learn" element={<Learn />} />
+    //     <Route path="/" element={<Chat />} />
+    //   </Routes>
+    // </BrowserRouter>
   );
 }
 
