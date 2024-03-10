@@ -34,7 +34,8 @@ router.post('/', (req, res) => {
 router.post('/prompts', (req, res) => {
   (async () => {
     console.log(req);
-    const firstPromptsAsk = 'Can you generate a list of 3 questions about abortion concerns? Please include only a list of questions';
+    const firstPromptsAsk =
+      'Can you generate a list of only 3 questions about abortion concerns? Please include only a list of questions with one space in between, nothing else';
     const followUpPromptsAsk =
       'Can you generate three follow up questions based on this input without proving any answers, only the questions please without any other information, just a list of three questions, but with one question that is slightly different from the two other questions';
     const promptsAsk = req.body.getFirstPrompts ? firstPromptsAsk : followUpPromptsAsk + req.body.userInput;
