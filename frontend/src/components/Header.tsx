@@ -1,5 +1,6 @@
 import { InputGroup, InputRightElement } from '@chakra-ui/input';
 import { LuSend, LuPenSquare } from 'react-icons/lu';
+import { Link } from 'react-router-dom';
 import { Image, Flex, Button, Heading, Icon, Input } from '@chakra-ui/react';
 
 export default function Header() {
@@ -16,9 +17,9 @@ export default function Header() {
       width="100%"
     >
       <Flex gap="0.5rem" alignItems="center">
-        <Button paddingInline="0" color="black">
-          <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '1.6rem', maxHeight: '100px' }} />
-        </Button>
+      <Link to="/chat"><Button paddingInline="0" color="black">
+            <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '1.6rem', maxHeight: '100px' }} />
+          </Button></Link>
         <Heading fontSize="md" display={['none', 'none', 'block']}>
           BigSister
         </Heading>
@@ -35,14 +36,14 @@ export default function Header() {
       >
         <Input borderRadius="100px" placeholder="Ask any question..." _placeholder={{ color: 'gray.500', fontSize: 'sm' }} />
         <InputRightElement w="3.0rem">
-          <Button h="2.0rem" bg="hotpink" padding="0rem" borderRadius="100px">
+          <Link to="/livechat"><Button h="2.0rem" bg="hotpink" padding="0rem" borderRadius="100px">
             <LuSend />
-          </Button>
+          </Button></Link>
         </InputRightElement>
       </InputGroup>
-      <Button paddingInline="0" color="black">
+      <Link to="/livechat"><Button paddingInline="0" color="black">
         <Icon as={LuPenSquare} boxSize="1.6rem" />
-      </Button>
+      </Button></Link>
     </Flex>
   );
 }

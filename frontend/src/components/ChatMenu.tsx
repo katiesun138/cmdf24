@@ -35,16 +35,16 @@ const ChatMenu: React.FC<ChatMenuProps> = ({ onClick }) => {
         width="100%"
       >
         <Flex gap="0.5rem" alignItems="center">
-          <Button paddingInline="0" color="black">
+          <Link to="/"><Button paddingInline="0" color="black">
             <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '1.6rem', maxHeight: '100px' }} />
-          </Button>
+          </Button></Link>
         </Flex>
         <Heading fontSize="md" fontWeight="600">
           Chat with BigSister
         </Heading>
-        <Button paddingInline="0" color="black">
+        <Link to="/livechat"><Button paddingInline="0" color="black">
           <Icon as={LuPenSquare} boxSize="1.6rem" />
-        </Button>
+        </Button></Link>
       </Flex>
 
       <Stack spacing={2} justifyContent="space-between" height="100%">
@@ -53,7 +53,7 @@ const ChatMenu: React.FC<ChatMenuProps> = ({ onClick }) => {
           <Box textAlign={'left'} bg={'white'} color="black" p={2} borderRadius="24px 24px 24px 0">
             <Text padding="0.5rem">
               {
-                "Hi, I'm BigSister! Feel free to ask me anything about abortion. This is a safe space, I am here to provide any guidance and support. Be reassured, our conversation stays anonymous and all the chat history gets deleted once you close this chat!"
+                "Hi, I'm BigSister! Feel free to ask me anything about abortion. This is a safe space, I am here to provide any guidance and support. Be reassured, our conversation stays anonymous and all the chat history gets deleted once you close this chat! Please choose your preferred chat option below."
               }
             </Text>
           </Box>
@@ -67,7 +67,7 @@ const ChatMenu: React.FC<ChatMenuProps> = ({ onClick }) => {
             </Button>
           </Link>
           <Link to="/prompts">
-            <Button colorScheme="hotpink" margin="0" padding="0" minWidth="200px" onClick={() => handleOptionClick('livechat')}>
+            <Button colorScheme="hotpink" margin="0" padding="0" minWidth="200px" onClick={() => handleOptionClick('prompts')}>
               <Flex direction="column" alignItems="center" whiteSpace="normal">
                 <ChatOption
                   hasIcon={false}

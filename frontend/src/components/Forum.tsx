@@ -1,5 +1,6 @@
 import TopicBox from './TopicBox';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { LuSettings2, LuPenSquare, LuSend } from 'react-icons/lu';
 import TinyComponent from './TinyMCE';
 import { Stack, Image, Flex, Button, Heading, Icon, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
@@ -34,9 +35,9 @@ function Forum() {
         width="100%"
       >
         <Flex gap="0.5rem" alignItems="center">
-          <Button paddingInline="0" color="black">
+        <Link to="/chat"><Button paddingInline="0" color="black">
             <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '1.6rem', maxHeight: '100px' }} />
-          </Button>
+          </Button></Link>
           <Heading fontSize="md" display={['none', 'none', 'block']}>
             BigSister
           </Heading>
@@ -58,9 +59,9 @@ function Forum() {
             </Button>
           </InputRightElement>
         </InputGroup>
-        <Button paddingInline="0" color="black" onClick={() => setContentVisible(!contentVisible)}>
+        <Link to="/livechat"><Button paddingInline="0" color="black" onClick={() => setContentVisible(!contentVisible)}>
           <Icon as={LuPenSquare} boxSize="1.6rem" />
-        </Button>
+        </Button></Link>
       </Flex>
       <Flex marginBlock="0.5rem" gap="0.5rem" height={contentVisible ? 'fit-content' : 0} id="content">
         <Button variant="hotpink">Popular</Button>

@@ -2,6 +2,7 @@ import { LuMapPin, LuPhone, LuArrowRight, LuPenSquare, LuSettings2, LuSend } fro
 import { Flex, Text, Image, Icon, Input, Button, Stack, Heading, InputGroup, InputRightElement } from '@chakra-ui/react';
 import TopicBox from './TopicBox';
 import Header from './Header';
+import { Link } from 'react-router-dom';
 
 interface ClinicProps {
   desc: string;
@@ -73,10 +74,10 @@ function Landing({ mgBot }: { mgBot: string }) {
           <Heading fontSize="1.6rem" color="white" textShadow="0 1px 2px rgba(0, 0, 10, 0.2)">
             Big Sister is here to help!
           </Heading>
-          <Button variant="white" color="#BB0038" paddingInline="36px" gap="0.5rem">
+          <Link to="/chat"><Button variant="white" color="#BB0038" paddingInline="36px" gap="0.5rem">
             Start
             <Icon as={LuArrowRight} boxSize="1.0rem" />
-          </Button>
+          </Button></Link>
         </Stack>
       </Stack>
       <Stack>

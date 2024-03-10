@@ -91,7 +91,7 @@ const Navbar = () => {
           </Button>
         </Link>
 
-        <Link to="/saved">
+        <Link to="/info">
           <Button
             display="flex" // Use flex display to align items
             flexDirection="column"
@@ -104,7 +104,7 @@ const Navbar = () => {
           >
             <LuBookmark />
             <Text fontSize="xs" color="white" textAlign="center">
-              Saved
+              Info
             </Text>
           </Button>
         </Link>

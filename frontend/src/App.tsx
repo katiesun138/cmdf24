@@ -7,6 +7,7 @@ import { Flex } from '@chakra-ui/react';
 import Chat from './components/Chat';
 import Landing from './components/Landing';
 import Location from './components/Location';
+import Info from './components/Info';
 import Forum from './components/Forum';
 import Navbar from './components/Navbar';
 
@@ -53,6 +54,7 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Landing mgBot="6rem" />} />
+          <Route path="/info" element={<Info mgBot="6rem"/>} />
           <Route path="/location" element={<Location />} />
           <Route path="/community" element={<Forum />} />
           <Route path="/chat" element={<ChatMenu onClick={handleOptionClick} />} />
