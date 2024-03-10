@@ -96,6 +96,7 @@ const Navbar = () => {
             alignItems="center"
             justifyContent="center"
             gap="0"
+          >
             <LuBookmark />
             <Text fontSize="xs" color="black" textAlign="center">
               Saved
