@@ -1,6 +1,6 @@
 import React from 'react';
 import { LuKeyboard, LuSend } from 'react-icons/lu';
-import { Input, Button, InputGroup, InputLeftElement, InputRightElement, Stack, Heading, Box } from '@chakra-ui/react';
+import { Input, Button, InputGroup, InputLeftElement, InputRightElement, Stack, Heading, Box, Text } from '@chakra-ui/react';
 import ChatOption from './ChatOption';
 
 interface PromptsProps {
@@ -33,12 +33,6 @@ const Prompts:React.FC<PromptsProps> = ({ onClick }) =>  {
   }, [messages]);
 
   const getNewPrompts = async (message: string, getFirstPrompts: boolean) => {
-
-    // const answer: Object = JSON.parse(message);
-    // const answerMessageObj: Message = {
-    //   type: "answer", 
-    //   content: answer. 
-    // }
 
     const userInputRequest = {
       method: 'POST',
@@ -73,21 +67,76 @@ const Prompts:React.FC<PromptsProps> = ({ onClick }) =>  {
   const handleClick = async (selectedPrompt: string) => {
     // get answer from chat api 
     const answer = await onClick(selectedPrompt);
-    setMessages([...messages, ({type: "answer", content: answer})])
+    const newMessages: Message[] = [{ type: 'answer', content: answer }];
 
     // create new prompts from answer
-    getNewPrompts(JSON.stringify(answer), false);
-    return {};
+    // getNewPrompts(JSON.stringify(answer), false);
+
+    const userInputRequest = {
+      method: 'POST',
+      mode: 'cors' as RequestMode,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userInput: answer,
+        getFirstPrompts: false,
+      }),
+    };
+
+    console.log(userInputRequest);
+
+    try {
+      const response = await fetch('http://localhost:8080/bigsister/prompts', userInputRequest);
+      const data = await response.json();
+      console.log(data);
+
+      // move to backend if ever
+      const filteredArray = data.filter((str: string) => str && str.includes('?'));
+      const msgArray = filteredArray.map((msg: string) => ({
+        type: 'prompt',
+        content: msg,
+      }));
+
+      const newArr = [...newMessages, ...msgArray];
+
+      setMessages([...messages, ...newArr]);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
       return (
         <>
-          <Stack width="100%" height="100%" justifyContent="center" padding="0.5rem">
+          <Stack
+            spacing={2}
+            position="sticky"
+            overflow="scrollX"
+            bottom="6rem"
+            direction="column"
+            alignItems="flex-end"
+            justifyContent="flex-end"
+            height="100%"
+          >
             {messages.map((msg, index) =>
               msg.type === 'prompt' ? (
-                <ChatOption title={msg.content} key={index} onClick={handleClick} />
+                <Button key={msg.type} width="fit-content" alignSelf="flex-start" p={2} onClick={() => handleClick(msg.content)}>
+                  <Text color="black" padding="0.5rem">
+                    {msg.content}
+                  </Text>
+                </Button>
               ) : (
-                <Box key={index} bg="lightBlue" textAlign={msg.type === 'prompt' ? 'left' : 'right'} borderRadius="md" />
+                <Box
+                  key={index}
+                  textAlign={msg.type === 'answer' ? 'right' : 'left'}
+                  bg={msg.type === 'answer' ? 'hotpink' : '#FFFFFF'}
+                  alignSelf={msg.type === 'answer' ? 'flex-end' : 'flex-start'}
+                  width="fit-content"
+                  p={2}
+                  borderRadius={msg.type === 'answer' ? '24px 24px 0 24px' : '24px 24px 24px 0 '}
+                >
+                  <Text color={msg.type === 'answer' ? 'white' : 'black'} padding="0.5rem">
+                    {msg.content}
+                  </Text>
+                </Box>
               ),
             )}
           </Stack>
