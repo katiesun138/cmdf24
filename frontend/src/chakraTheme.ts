@@ -12,6 +12,7 @@ const colors = {
   hotpink: `#E92498`,
   lpink: `#F6A8D4`,
   lorange: `#FDC7AB`,
+  dorange: `#FC8119`,
   peach: `#FEF6F7`,
 
   secondary: {

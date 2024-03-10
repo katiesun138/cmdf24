@@ -61,7 +61,7 @@ function Landing({ mgBot }: { mgBot: string }) {
         alignItems="space-between"
         padding="1.2rem"
         width="100%"
-        bgGradient="linear(to-r, lpink, lorange)"
+        bgGradient="linear(to-r, hotpink, dorange)"
         borderRadius="24px"
         justifyContent="space-between"
         height="fit-content"
@@ -71,7 +71,7 @@ function Landing({ mgBot }: { mgBot: string }) {
           <Heading fontSize="1.6rem" color="white" textShadow="0 1px 2px rgba(0, 0, 10, 0.2)">
             Big Sister is here to help!
           </Heading>
-          <Button variant="hotpink" paddingInline="36px" gap="0.5rem">
+          <Button variant="white" color="#BB0038" paddingInline="36px" gap="0.5rem">
             Start
             <Icon as={LuArrowRight} boxSize="1.0rem" />
           </Button>
