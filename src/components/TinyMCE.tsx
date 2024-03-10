@@ -2,7 +2,7 @@ import React from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
 const MyEditor = () => {
-  const handleEditorChange = (content, editor) => {
+  const handleEditorChange = (content: any, editor: any) => {
     console.log('Content was updated:', content);
   };
 

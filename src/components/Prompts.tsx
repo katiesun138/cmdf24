@@ -5,35 +5,60 @@ interface PromptsProps {
 }
 
 const Prompts:React.FC<PromptsProps> = ({ onClick }) =>  {
-  const [message, setMessage] = React.useState<string>("");
-  const [selectedPrompt, setSelectedPrompt] = React.useState<string>("");
+  const [messages, setMessages] = React.useState<string[]>([]);
+  const [prompts, setPrompts] = React.useState<string[]>([]);
 
-  // const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-  //   const [selectedPrompt, setSelectedPrompt] = React.useState<string>('');
+  React.useEffect(() => {
+    const firstPrompts = getNewPrompts("", true);
+    console.log(firstPrompts);
+  }, []);
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      const prompt = e.currentTarget.textContent || ''; // Get the text content of the button
-      setSelectedPrompt(prompt);
+  const getNewPrompts = async (message: string, getFirstPrompts: boolean) => {
 
-      // Call onClick with the selected prompt
-      onClick(prompt);
+    const userInputRequest = {
+      method: 'POST',
+      mode: 'cors' as RequestMode,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userInput: message,
+        getFirstPrompts: getFirstPrompts, 
+      }),
+    }; 
+
+    console.log(userInputRequest);
+
+    try {
+      const response = await fetch('http://localhost:8080/bigsister/prompts', userInputRequest);
+      const data = await response.json();
+      console.log(data);
+
+      setPrompts(data);
+      setMessages([...messages, ...data])
+    } catch (err) {
+      console.log(err);
+    }
   }
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>, selectedPrompt: string) => {
+    const answer = onClick(selectedPrompt);
+    const stringAnswer = JSON.stringify(answer);
+    setMessages([...messages, stringAnswer]);
+    getNewPrompts(JSON.stringify(stringAnswer), false);
+  };
 
       return (
         <>
+          {prompts.map(prompt => {
+            return (
+              <button 
+                onClick={(e) => handleClick(e, prompt)}>
+                {prompt}
+              </button>
+            )
+          })}
           <div>THIS IS THE Prompts</div>
-          <button onClick={handleClick}>Prompt</button>
         </>
       );
   };
-
-  
-    // setSelectedPrompt(e.target.value);
-    // chat answer
-      // change state of selected prompt 
-      // call chat api with selected prompt
-      // if (selectedPrompt.trim() !== '') {
-      //   onClick(selectedPrompt);
-      // }
 
 export default Prompts
