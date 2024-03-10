@@ -209,20 +209,11 @@ const Map = () => {
           Search Surroundings
         </Button>
       </Box> */}
-      <Box
-        boxShadow="0 -4px 12px rgba(0, 0, 10, 0.2)"
-        width="100%"
-        zIndex="3"
-        bg="white"
-        padding="24px"
-        borderRadius="24px"
-        maxHeight="50vh"
-        overflowY="auto"
-      >
+      <Box boxShadow="0 -4px 12px rgba(0, 0, 10, 0.2)" width="100%" zIndex="3" bg="white" padding="24px" borderRadius="24px" maxHeight="50vh">
         {showFilteredClinics && (
           <Stack>
             <Heading fontSize="lg">Nearby clinics</Heading>
-            <Flex direction="column" align="left" width="100%">
+            <Flex direction="column" gap={['0', '0', '1rem']} align="left" width="100%">
               {filteredClinics.length > 0 ? (
                 filteredClinics.map((clinic, index) => (
                   <Flex key={index} justifyContent="space-between" width="100%" paddingBlock="0.2rem" borderWidth="1px" borderRadius="md">
@@ -234,7 +225,9 @@ const Map = () => {
                         <Flex direction={['column', 'column', 'row']} opacity="0.6" gap={['0', '0', '1rem']}>
                           <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm">
                             <Icon as={LuPhone} boxSize="1.0rem" />
-                            {clinic.phone}
+                            <Text fontSize="sm" color="#404353" noOfLines={1}>
+                              {clinic.phone}
+                            </Text>
                           </Box>
                           <Box display="flex" alignItems="center" gap="0.5rem" color="#404353" fontSize="sm" maxWidth="80%">
                             <Icon as={LuMapPin} boxSize="1.0rem" />

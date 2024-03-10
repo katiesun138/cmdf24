@@ -6,6 +6,10 @@ export default function Header() {
   return (
     <Flex
       paddingBlock="0.5rem"
+      position="sticky"
+      top="0"
+      zIndex="100"
+      bg="peach"
       // borderBottom="1px solid rgba(0, 0, 0, 0.20)"
       justifyContent="space-between"
       alignItems="center"
