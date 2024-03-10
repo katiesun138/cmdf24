@@ -24,4 +24,11 @@ export const chakraTheme = extendTheme({
     initialColorMode: `dark`,
     useSystemColorMode: false,
   },
+  styles: {
+    global: {
+      body: {
+        bg: 'white',
+      },
+    },
+  },
 });
