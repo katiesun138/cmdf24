@@ -1,7 +1,6 @@
 import React from 'react';
 import { LuKeyboard, LuPenSquare, LuSend } from 'react-icons/lu';
 import { Flex, Box, Input, Button, InputGroup, InputLeftElement, InputRightElement, Image, Stack, Heading, Text, Icon } from '@chakra-ui/react';
-import ChatOption from './ChatOption';
 
 interface ChatProps {
   onSendMessage: (message: string) => Promise<string>;
