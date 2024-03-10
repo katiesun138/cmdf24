@@ -46,9 +46,12 @@ const Chat: React.FC<ChatProps> = ({ onSendMessage }) => {
   };
 
   return (
-    <Stack width="100%" height="100vh" justifyContent="center" paddingInline={['1rem', '2rem', '8rem']} gap="1.6rem" maxWidth="1200px">
+    <Stack width="100%" height="100vh" justifyContent="flex-start" paddingInline={['1rem', '2rem', '8rem']} gap="1.6rem" maxWidth="1200px">
       <Flex
         paddingBlock="0.5rem"
+        position="sticky"
+        top="0"
+        bg="peach"
         // borderBottom="1px solid rgba(0, 0, 0, 0.20)"
         justifyContent="space-between"
         alignItems="center"
@@ -76,57 +79,66 @@ const Chat: React.FC<ChatProps> = ({ onSendMessage }) => {
           </Text>
         </Box>
       </Stack>
-
-      <Stack spacing={2} direction="column-reverse" justifyItems="flex-end" height="80vh">
-        {messages.map((msg, index) => (
-          <Box
-            key={index}
-            textAlign={msg.type === 'user' ? 'right' : 'left'}
-            bg={msg.type === 'user' ? 'hotpink' : '#FFFFFF'}
-            alignSelf={msg.type === 'user' ? 'flex-end' : 'flex-start'}
-            width="fit-content"
-            p={2}
-            borderRadius={msg.type === 'user' ? '24px 24px 0 24px' : '24px 24px 24px 0 '}
-          >
-            <Text color={msg.type === 'user' ? 'white' : 'black'} padding="0.5rem">
-              {msg.content}
-            </Text>
-          </Box>
-        ))}
+      <Stack height="80vh" marginBottom="5rem" overflow="scrollX">
+        <Stack
+          spacing={2}
+          position="sticky"
+          overflow="scrollX"
+          bottom="6rem"
+          direction="column"
+          alignItems="flex-end"
+          justifyContent="flex-end"
+          height="100%"
+        >
+          {messages.map((msg, index) => (
+            <Box
+              key={index}
+              textAlign={msg.type === 'user' ? 'right' : 'left'}
+              bg={msg.type === 'user' ? 'hotpink' : '#FFFFFF'}
+              alignSelf={msg.type === 'user' ? 'flex-end' : 'flex-start'}
+              width="fit-content"
+              p={2}
+              borderRadius={msg.type === 'user' ? '24px 24px 0 24px' : '24px 24px 24px 0 '}
+            >
+              <Text color={msg.type === 'user' ? 'white' : 'black'} padding="0.5rem">
+                {msg.content}
+              </Text>
+            </Box>
+          ))}
+        </Stack>
+        <InputGroup
+          position="sticky"
+          bottom="5rem"
+          width="100%"
+          justifySelf="center"
+          bg="#F8F8F8"
+          borderRadius="100px"
+          borderWidth="1px"
+          borderColor="gray.300"
+        >
+          <InputLeftElement pointerEvents="none">
+            <LuKeyboard color="gray.300" />
+          </InputLeftElement>
+          <Input
+            border="none"
+            borderRadius="100px"
+            color="gray.600"
+            width="100%"
+            bg="none"
+            placeholder="Ask anything..."
+            _placeholder={{ color: 'gray.400', fontSize: 'sm' }}
+            value={message}
+            onChange={e => setMessage(e.target.value)}
+          />
+          <InputRightElement w="3.0rem">
+            <Button onClick={handleSubmit} type="submit" h="2.0rem" bg="hotpink" padding="0rem" borderRadius="100px">
+              <LuSend />
+            </Button>
+          </InputRightElement>
+        </InputGroup>
       </Stack>
 
       {/* <Text>{JSON.stringify(messages)}</Text> */}
-
-      <InputGroup
-        position="relative"
-        width="100%"
-        justifySelf="center"
-        bottom="5rem"
-        bg="#F8F8F8"
-        borderRadius="100px"
-        borderWidth="1px"
-        borderColor="gray.300"
-      >
-        <InputLeftElement pointerEvents="none">
-          <LuKeyboard color="gray.300" />
-        </InputLeftElement>
-        <Input
-          border="none"
-          borderRadius="100px"
-          color="gray.600"
-          width="100%"
-          bg="none"
-          placeholder="Ask anything..."
-          _placeholder={{ color: 'gray.400', fontSize: 'sm' }}
-          value={message}
-          onChange={e => setMessage(e.target.value)}
-        />
-        <InputRightElement w="3.0rem">
-          <Button onClick={handleSubmit} type="submit" h="2.0rem" bg="hotpink" padding="0rem" borderRadius="100px">
-            <LuSend />
-          </Button>
-        </InputRightElement>
-      </InputGroup>
     </Stack>
   );
 };
