@@ -13,7 +13,7 @@ const Location: React.FC = () => {
 
   if (!isLoaded) return <div>Loading...</div>;
 
-  return <Map/>;
+  return <Map long={0} lat={0}/>;
 };
 
 export default Location;

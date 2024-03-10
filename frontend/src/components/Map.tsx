@@ -23,7 +23,7 @@ const Map: React.FC<MapProps> = ({ long, lat }) => {
 //   };
 
 //   console.log('I AM IN MAP AND THIS IS MY LOCATION, ', long, lat);
-//   const [map, setMap] = React.useState(null);
+  const [map, setMap] = React.useState(null);
 
 //   const [markerPosition, setMarkerPosition] = useState<{ lat: number; lng: number }>({ lat, lng: long });
 
