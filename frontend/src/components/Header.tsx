@@ -4,7 +4,13 @@ import { Image, Flex, Button, Heading, Icon, Input } from '@chakra-ui/react';
 
 export default function Header() {
   return (
-    <Flex paddingBlock="0.5rem" borderBottom="1px solid rgba(0, 0, 0, 0.20)" justifyContent="space-between" alignItems="center" width="100%">
+    <Flex
+      paddingBlock="0.5rem"
+      // borderBottom="1px solid rgba(0, 0, 0, 0.20)"
+      justifyContent="space-between"
+      alignItems="center"
+      width="100%"
+    >
       <Flex gap="0.5rem" alignItems="center">
         <Button paddingInline="0" color="black">
           <Image alignSelf="center" src="/bigsisicon.png" alt="Description of the image" style={{ maxWidth: '1.6rem', maxHeight: '100px' }} />

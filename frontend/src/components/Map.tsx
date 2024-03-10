@@ -179,7 +179,9 @@ const Map = () => {
           onUnmount={onUnmount}
           onClick={anotherMarker}
         >
-          <Heading color="white">Click anywhere on the map...</Heading>
+          <Heading color="white" pointerEvents="none">
+            Click anywhere on the map...
+          </Heading>
           {/* Your map markers and circles */}
           {showFilteredClinics && (
             <>
@@ -220,10 +222,10 @@ const Map = () => {
         {showFilteredClinics && (
           <Stack>
             <Heading fontSize="lg">Nearby clinics</Heading>
-            <Flex direction="column" align="left" width="100%" paddingBottom={50}>
+            <Flex direction="column" align="left" width="100%">
               {filteredClinics.length > 0 ? (
                 filteredClinics.map((clinic, index) => (
-                  <Box key={index} width="100%" borderWidth="1px" borderRadius="md" marginBottom="4">
+                  <Box key={index} width="100%" borderWidth="1px" borderRadius="md">
                     <Heading size="1rem">
                       <Link href={clinic.url} noOfLines={1} textDecoration="none" color="blue.500" _hover={{ color: 'blue.700' }}>
                         {clinic.name}
