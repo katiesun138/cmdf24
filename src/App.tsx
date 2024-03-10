@@ -8,9 +8,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Flex, Switch } from '@chakra-ui/react';
 import Chat from './components/Chat';
 import Landing from './components/Landing';
-import Navbar from './components/Navbar';
-
-
+import Location from './components/Location';
+import Forum from './components/Forum';
+import Navbar from './components/NavBar';
 
 function App() {
   const [messages, setMessages] = React.useState<string[]>([]);

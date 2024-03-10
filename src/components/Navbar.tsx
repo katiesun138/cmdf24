@@ -29,7 +29,16 @@ const Navbar = () => {
         width="100%"
       >
         <Link to="/">
-          <Button display="flex" width="2rem" alignItems="center" justifyContent="center" gap="0">
+          <Button
+            display="flex" // Use flex display to align items
+            flexDirection="column"
+            color="black"
+            textAlign="center"
+            width="2rem"
+            alignItems="center"
+            justifyContent="center"
+            gap="0"
+          >
             <LuHome />
             <Text fontSize="xs" color="black" textAlign="center">
               Home
@@ -38,7 +47,15 @@ const Navbar = () => {
         </Link>
 
         <Link to="/location">
-          <Button display="flex" width="2rem" alignItems="center" justifyContent="center" gap="0">
+          <Button
+            display="flex" // Use flex display to align items
+            flexDirection="column"
+            color="black"
+            width="2rem"
+            alignItems="center"
+            justifyContent="center"
+            gap="0"
+          >
             <LuMap />
             <Text fontSize="xs" color="black" textAlign="center">
               Map
@@ -47,15 +64,22 @@ const Navbar = () => {
         </Link>
 
         <Link to="/chat">
-          <Button display="flex" width="2rem" alignItems="center" justifyContent="center" gap="0">
+          <Button width="2rem" alignItems="center" justifyContent="center" gap="0">
             <Flex padding="0.8rem" bg="hotpink" borderRadius="100px">
               <LuMessageCircle color="white" />
             </Flex>
           </Button>
         </Link>
-
-        <Link to="/chat">
-          <Button display="flex" width="2rem" alignItems="center" justifyContent="center" gap="0">
+        <Link to="/community">
+          <Button
+            display="flex" // Use flex display to align items
+            flexDirection="column"
+            color="black"
+            width="2rem"
+            alignItems="center"
+            justifyContent="center"
+            gap="0"
+          >
             <LuUsers2 />
             <Text fontSize="xs" color="black" textAlign="center">
               Community
@@ -64,7 +88,14 @@ const Navbar = () => {
         </Link>
 
         <Link to="/saved">
-          <Button display="flex" width="2rem" alignItems="center" justifyContent="center" gap="0">
+          <Button
+            display="flex" // Use flex display to align items
+            flexDirection="column"
+            color="black"
+            width="2rem"
+            alignItems="center"
+            justifyContent="center"
+            gap="0"
             <LuBookmark />
             <Text fontSize="xs" color="black" textAlign="center">
               Saved
