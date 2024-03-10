@@ -1,6 +1,6 @@
 import React from 'react';
-import { LuMapPin, LuPhone } from 'react-icons/lu';
-import { Flex, Text, Image, Input, Button, Stack, Heading } from '@chakra-ui/react';
+import { LuMapPin, LuPhone, LuArrowRight } from 'react-icons/lu';
+import { Flex, Text, Image, Icon, Input, Button, Stack, Heading } from '@chakra-ui/react';
 import TopicBox from './TopicBox';
 
 interface ClinicProps {
@@ -71,8 +71,9 @@ function Landing({ mgBot }: { mgBot: string }) {
           <Heading fontSize="1.6rem" color="white" textShadow="0 1px 2px rgba(0, 0, 10, 0.2)">
             Big Sister is here to help!
           </Heading>
-          <Button variant="hotpink" paddingInline="36px">
+          <Button variant="hotpink" paddingInline="36px" gap="0.5rem">
             Start
+            <Icon as={LuArrowRight} boxSize="1.0rem" />
           </Button>
         </Stack>
       </Stack>
