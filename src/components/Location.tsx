@@ -8,7 +8,7 @@ const Location: React.FC = () => {
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: 'AIzaSyCQCRo-wYWlvKLNYH8xd_FbmnqGlHwl9Lg',
-    libraries: ["places"],
+    libraries: ['places'],
   });
 
   if (!isLoaded) return <div>Loading...</div>;

@@ -54,9 +54,9 @@ const Map = () => {
   }, []);
   //   const center = useMemo(() => ({ lat: firstLocation.lat, lng: firstLocation.long }), [markerPosition]);
 
-  const onUnmount = React.useCallback(function callback(map: any) {
-    setMap(null);
-  }, []);
+//   const onUnmount = React.useCallback(function callback(map: any) {
+//     setMap(null);
+//   }, []);
 
   const anotherMarker = (event: google.maps.MapMouseEvent) => {
     const clickedLat = event.latLng!.lat();
