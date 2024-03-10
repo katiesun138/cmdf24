@@ -18,7 +18,7 @@ function App() {
     setSelectedOption(option);
   };
 
-  const handleSendMessage = async (message: string) => {
+  const handleSendMessage = async (message: string): Promise<string> => {
     setMessages([...messages, message]);
 
     console.log('handleSendMessage');
@@ -36,9 +36,12 @@ function App() {
     try {
       const response = await fetch('http://localhost:8080/bigsister', userInputRequest);
       const data = await response.json();
-      return data;
+      const stringData = data.toString(); // Convert data to string if it's not already
+      return stringData;
     } catch (err) {
       console.log(err);
+      return "Couldn't communicate with Cohere";
+      // throw new Error('Failed to fetch data');
     }
   };
 
