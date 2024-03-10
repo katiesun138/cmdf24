@@ -17,6 +17,44 @@ const colors = {
   transparent: `#00000000`,
   warning: `#FE8311`,
 };
+const components = {
+  Button: {
+    variants: {
+      noStyles: {
+        background: `none`,
+        padding: `0`,
+        height: `auto`,
+        position: `relative`,
+        alignItems: `auto`,
+        whiteSpace: `auto`,
+        textAlign: `left`,
+        fontWeight: `auto`,
+        lineHeight: `auto`,
+      },
+    },
+  },
+  Text: {
+    baseStyle: {
+      color: 'black', // Your desired text color
+      fontFamily: `Nunito`,
+      fontSize: `1rem`,
+      letterSpacing: '-0.02em',
+    },
+  },
+  Box: {
+    baseStyle: {
+      background: `white`,
+    },
+  },
+  Heading: {
+    baseStyle: {
+      fontFamily: `Nunito`,
+      color: 'black',
+      fontWeight: `light`,
+      letterSpacing: `-0.03em`,
+    },
+  },
+};
 
 export const chakraTheme = extendTheme({
   colors,
@@ -24,6 +62,7 @@ export const chakraTheme = extendTheme({
     initialColorMode: `dark`,
     useSystemColorMode: false,
   },
+  components,
   styles: {
     global: {
       body: {
