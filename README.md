@@ -1,4 +1,5 @@
-# Welcome to BigSister! ## A web app to help women know more and get support with abortion. 
+# Welcome to BigSister! 
+## A web app to help women know more and get support with abortion. 
 
 ### This is a hackthon project (cmd-f 2024).
 
