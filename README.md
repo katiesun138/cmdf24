@@ -1,3 +1,15 @@
+# Welcome to BigSister! 
+## A web app to help women know more and get support with abortion. 
+
+### This is a hackthon project (cmd-f 2024).
+
+Bigsister main features include:
+- a live AI chatbot to ask questions, get support or select generated prompts (anonymous & no tracking for full privacy)
+- an interactive map to find nearby clinics
+- an anonymous forum to ask questions to health practitioners
+
+Disclaimer: we used Cohere for the chatbot and required a key that is not included in this repo. If you run this project locally and want the full chat integration, you should use your own key. Be aware that Cohere requires extra training on sensitive data to be fully safe for this topic.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
