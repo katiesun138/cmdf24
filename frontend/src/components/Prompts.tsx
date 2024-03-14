@@ -2,7 +2,6 @@ import React from 'react';
 import { LuKeyboard, LuPenSquare, LuSend } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 import { Input, Button, InputGroup, InputLeftElement, InputRightElement, Stack, Heading, Box, Text, Flex, Icon, Image} from '@chakra-ui/react';
-// import ChatOption from './ChatOption';
 
 interface PromptsProps {
   onClick: (message: string) => Promise<string>;
@@ -21,7 +20,11 @@ const Prompts:React.FC<PromptsProps> = ({ onClick }) =>  {
     async function fetchFirstPrompts() {
       try {
         if (getFirstPrompts) {
-          getNewPrompts("", getFirstPrompts);
+          getNewPrompts("", getFirstPrompts)
+            .then(promptsArr => {
+              setMessages([...messages, ...promptsArr]);
+            })
+            .catch(err => { console.log(err) });
           setGetFirstPrompts(false); 
         }
       } catch (e) {
@@ -46,63 +49,38 @@ const Prompts:React.FC<PromptsProps> = ({ onClick }) =>  {
     }; 
 
     console.log(userInputRequest);
+    var promptsArr = []
 
     try {
       const response = await fetch('http://localhost:8080/bigsister/prompts', userInputRequest);
       const data = await response.json();
       console.log(data);
       
-      // move to backend if ever
-      const filteredArray = data.filter((str: string) => str && str.includes('?'));
-      const msgArray = filteredArray.map((msg: string) => ({
+      promptsArr = data.map((msg: string) => ({
         type: 'prompt',
         content: msg,
       }));
 
-      setMessages([...messages, ...msgArray]);
+      return promptsArr;
+
     } catch (err) {
       console.log(err);
     }
   }
 
   const handleClick = async (selectedPrompt: string) => {
-    // get answer from chat api 
-    const answer = await onClick(selectedPrompt);
-    const newMessages: Message[] = [{ type: 'answer', content: answer }];
+    var ansMessages: Message[] = [];
 
-    // create new prompts from answer
-    // getNewPrompts(JSON.stringify(answer), false);
-
-    const userInputRequest = {
-      method: 'POST',
-      mode: 'cors' as RequestMode,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        userInput: answer,
-        getFirstPrompts: false,
-      }),
-    };
-
-    console.log(userInputRequest);
-
-    try {
-      const response = await fetch('http://localhost:8080/bigsister/prompts', userInputRequest);
-      const data = await response.json();
-      console.log(data);
-
-      // move to backend if ever
-      const filteredArray = data.filter((str: string) => str && str.includes('?'));
-      const msgArray = filteredArray.map((msg: string) => ({
-        type: 'prompt',
-        content: msg,
-      }));
-
-      const newArr = [...newMessages, ...msgArray];
-
-      setMessages([...messages, ...newArr]);
-    } catch (err) {
-      console.log(err);
-    }
+    onClick(selectedPrompt)
+      .then(answer => {
+        ansMessages.push({ type: 'answer', content: answer });
+        return getNewPrompts(JSON.stringify(answer), false);
+      })
+      .then((promptsArr) => {
+        const newArr = [...ansMessages, ...promptsArr];
+        setMessages([...messages, ...newArr]);
+      })
+      .catch(err => { console.log(err) });
   };
 
       return (
@@ -155,11 +133,11 @@ const Prompts:React.FC<PromptsProps> = ({ onClick }) =>  {
                     <Button
                       key={msg.type}
                       width="max-width"
-                      textAlign="left"
-                      alignSelf="flex-start"
+                      textAlign="right"
+                      alignSelf="flex-end"
                       p={2}
                       bg="#FFFFFF"
-                      borderRadius="24px 24px 24px 0"
+                      borderRadius="24px 24px 0 24px"
                       onClick={() => handleClick(msg.content)}
                     >
                       <Text color="black" padding="0.5rem">
@@ -169,14 +147,14 @@ const Prompts:React.FC<PromptsProps> = ({ onClick }) =>  {
                   ) : (
                     <Box
                       key={index}
-                      textAlign={msg.type === 'answer' ? 'right' : 'left'}
-                      bg={msg.type === 'answer' ? 'hotpink' : '#FFFFFF'}
-                      alignSelf={msg.type === 'answer' ? 'flex-end' : 'flex-start'}
+                      textAlign='left'
+                      bg="hotpink"
+                      alignSelf='flex-start'
                       width="fit-content"
                       p={2}
-                      borderRadius={msg.type === 'answer' ? '24px 24px 0 24px' : '24px 24px 24px 0 '}
+                      borderRadius='24px 24px 24px 0'
                     >
-                      <Text color={msg.type === 'answer' ? 'white' : 'black'} padding="0.5rem">
+                      <Text color='white' padding="0.5rem">
                         {msg.content}
                       </Text>
                     </Box>

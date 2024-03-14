@@ -14,7 +14,6 @@ interface Message {
 
 const Chat: React.FC<ChatProps> = ({ onSendMessage }) => {
   const [message, setMessage] = React.useState<string>('');
-  // const [answer, setAnswer] = React.useState<Object>({});
   const [messages, setMessages] = React.useState<Message[]>([]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -52,7 +51,6 @@ const Chat: React.FC<ChatProps> = ({ onSendMessage }) => {
         position="sticky"
         top="0"
         bg="peach"
-        // borderBottom="1px solid rgba(0, 0, 0, 0.20)"
         justifyContent="space-between"
         alignItems="center"
         width="100%"
@@ -140,8 +138,6 @@ const Chat: React.FC<ChatProps> = ({ onSendMessage }) => {
           </InputRightElement>
         </InputGroup>
       </Stack>
-
-      {/* <Text>{JSON.stringify(messages)}</Text> */}
     </Stack>
   );
 };
