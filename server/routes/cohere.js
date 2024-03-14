@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
     // console.log(req);
     const chatStream = await cohere.chatStream({
       stream: true,
-      message: "Can you provide an answer to this input in less than 200 words " + req.body.userInput,
+      message: 'Can you provide an answer to this input in less than 200 words ' + req.body.userInput,
       // perform web search before answering the question. You can also use your own custom connector.
       preambleOverride: 'You are a trusted big sister to help support women during their abortion process.',
       // connectors: [{ id: 'web-search' }],
@@ -58,10 +58,11 @@ router.post('/prompts', (req, res) => {
     }
 
     // parse cohere api response to an array of question prompts
-    const separatedStrings = fullMessage.split('\n');
+    const separatedPrompts = fullMessage.split('\n');
+    const filteredPrompts = separatedPrompts.filter(str => str && str.includes('?'));
 
     console.log('cohere api done!');
-    res.status(200).send(JSON.stringify(separatedStrings));
+    res.status(200).send(JSON.stringify(filteredPrompts));
     console.log('response sent!');
   })();
 });

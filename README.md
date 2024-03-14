@@ -8,7 +8,9 @@ Bigsister main features include:
 - an interactive map to find nearby clinics
 - an anonymous forum to ask questions to health practitioners
 
-Disclaimer: we used Cohere for the chatbot and required a key that is not included in this repo. If you run this project locally and want the full chat integration, you should use your own key. Be aware that Cohere requires extra training on sensitive data to be fully safe for this topic.
+Disclaimer: we used Cohere for the chatbot and required an API key that is not included in this repo.  If you run this project locally and want the full chat integration, you should use your own API key and add it to a .env file in the server directory. Be aware that Cohere requires extra training on sensitive data to be fully safe for this topic.
+
+The same goes for the Google Maps API we used for our interactive map. You should use your own API key and add it to a .env file in the frontend directory
 
 # Getting Started with Create React App
 
