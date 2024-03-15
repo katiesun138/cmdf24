@@ -59,7 +59,7 @@ app.post('/', (req, res) => {
 //   res.status(200).send("router is working")
 // })
 
-app.get('/prompts', (req, res) => {
+app.post('/prompts', (req, res) => {
   (async () => {
     // console.log(req);
     const firstPromptsAsk =
