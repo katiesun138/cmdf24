@@ -31,7 +31,11 @@ router.post('/', (req, res) => {
   })();
 });
 
-router.post('/prompts', (req, res) => {
+router.get('/', (req, res) => {
+  res.status(200).send("router is working")
+})
+
+router.get('/prompts', (req, res) => {
   (async () => {
     // console.log(req);
     const firstPromptsAsk =
