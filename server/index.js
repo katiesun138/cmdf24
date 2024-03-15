@@ -14,6 +14,10 @@ app.listen(port, () => {
 
 app.get('/', (req, res) => res.status(200).send('hello world!'));
 
+app.get('/checking', (req, res) => {
+  res.status(200).send("router is working")
+})
+
 const cohereRouter = require('./routes/cohere');
 app.use('/bigsister', cohereRouter);
 
